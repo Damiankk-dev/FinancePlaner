@@ -81,12 +81,7 @@ std::string DateServer::getCurrentMonthBeginingDate(){
 
     int monthNum = 1 + currentDate->tm_mon;
     int yearNum = 1900 + currentDate->tm_year;
-    std::string currentMonthBegDate = AuxiliaryMethods::convertInt2String(yearNum);
-    currentMonthBegDate += "-";
-    currentMonthBegDate += AuxiliaryMethods::convertInt2String(monthNum);
-    currentMonthBegDate += "-01";
-    std::cout << "Poczatek aktualnego mieiaca: " << currentMonthBegDate << "\n";
-    return currentMonthBegDate;
+    return concatenateDate(yearNum, monthNum, 1);
 //    if ( monthNum < 8 ) {
 //        if ( monthNum % 2 != 0 ) {
 //            daysInMonth = 31;
@@ -108,23 +103,22 @@ std::string DateServer::getPastMonthBeginingDate(){
     time_t currentSystemDate = readSystemDate();
     struct tm *currentDate = localtime(&currentSystemDate );
 
-    int monthNum = 1 + currentDate->tm_mon - 1;
+    int monthNum = 1 + currentDate->tm_mon;
     int yearNum = 1900 + currentDate->tm_year;
-        std::string currentMonthBegDate = "";
-    if (monthNum != 0){
-        currentMonthBegDate += AuxiliaryMethods::convertInt2String(yearNum);
-        currentMonthBegDate += "-";
-        currentMonthBegDate += AuxiliaryMethods::convertInt2String(monthNum);
-        currentMonthBegDate += "-01";
-        std::cout << "Poczatek poprzedniego mieiaca: " << currentMonthBegDate << "\n";
+    if (monthNum == 1){
+        return concatenateDate(yearNum - 1, 12, 1);
     } else {
-        monthNum = 12;
-        yearNum -= 1;
-        currentMonthBegDate += AuxiliaryMethods::convertInt2String(yearNum);
-        currentMonthBegDate += "-";
-        currentMonthBegDate += AuxiliaryMethods::convertInt2String(monthNum);
-        currentMonthBegDate += "-01";
-        std::cout << "Poczatek poprzedniego mieiaca: " << currentMonthBegDate << "\n";
+        return concatenateDate(yearNum, monthNum - 1, 1);
     }
-    return currentMonthBegDate;
+}
+std::string DateServer::concatenateDate(int year, int month, int day){
+        std::string dateString = "";
+        dateString += AuxiliaryMethods::convertInt2String(year);
+        dateString += "-";
+        dateString += AuxiliaryMethods::convertInt2String(month);
+        dateString += "-";
+        dateString += AuxiliaryMethods::convertInt2String(day);
+        std::cout << "Podana data do zlaczenia: " << dateString << "\n";
+        return dateString;
+
 }

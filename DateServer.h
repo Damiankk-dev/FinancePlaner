@@ -13,7 +13,6 @@ public:
     bool isDateFormatProper(std::string);
     bool isDateConvertible(std::string);
     //tests:
-    std::string getCurrentMonthBeginingDate();
 
 
 private:
@@ -24,9 +23,11 @@ private:
     bool isLeap(unsigned year);
 
 
-    std::string getCurrentMonthEndDate();
+    std::string getCurrentMonthBeginingDate();
     std::string getPastMonthBeginingDate();
+    std::string getCurrentMonthEndDate();
     std::string getPastMonthEndDate();
+    std::string concatenateDate(int, int, int);
 
 
     time_t readSystemDate();
