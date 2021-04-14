@@ -1,22 +1,28 @@
-#ifndef UZYTKOWNIK_H
-#define UZYTKOWNIK_H
+#ifndef USER_H
+#define USER_H
 
 #include <iostream>
 using namespace std;
 
-class Uzytkownik{
+class User{
     int id;
-    string login;
-    string haslo;
+    string username;
+    string password;
 
 public:
-    void ustawId(int noweId);
-    void ustawLogin(string nowyLogin);
-    void ustawHaslo(string noweHaslo);
+    User(int id = 0, std::string username = "", std::string password = "" ) {
+        this->id = id;
+        this->username = username;
+        this->password = password;
+    }
 
-    int pobierzId();
-    string pobierzLogin();
-    string pobierzHaslo();
+    void setID(int newID);
+    void setUsername(string newUsername);
+    void setPassword(string newPassword);
+
+    int getID();
+    string getUsername();
+    string getPassword();
 };
 
 #endif

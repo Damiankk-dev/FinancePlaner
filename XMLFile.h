@@ -5,7 +5,7 @@
 
 #include "Markup.h"
 
-class XMLFile{
+class XMLFile : public CMarkup{
 
 const std::string FILENAME;
 

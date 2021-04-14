@@ -1,12 +1,12 @@
 #include "xmlFile.h"
 
 bool XMLFile::isFileInitializedProperly(){
-    CMarkup xml;
-    bool isXMLInitializedProperly = xml.Load( FILENAME ); //zwraca true, gdy plik ma root
+//    CMarkup xml;
+    bool isXMLInitializedProperly = this->Load( FILENAME ); //zwraca true, gdy plik ma root
     if (!isXMLInitializedProperly) {
         initializeFile();
     }
-    isXMLInitializedProperly = xml.Load( FILENAME );
+    isXMLInitializedProperly = this->Load( FILENAME );
     if (!isXMLInitializedProperly) {
         std::cout << "Unable to initialize file\n";
     }
@@ -18,8 +18,7 @@ std::string XMLFile::getFilename(){
 }
 
 void XMLFile::initializeFile(){
-    CMarkup xml;
-    xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-    xml.AddElem("root");
-    xml.Save( FILENAME );
+    this->SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+    this->AddElem("root");
+    this->Save( FILENAME );
 }
