@@ -2,16 +2,20 @@
 
 #include "Markup.h"
 
+#include "xmlFile.h"
+
 using namespace std;
 
 int main()
 {
     //TODO: plik xml z uzytwkonikami
     cout << "Hello world!" << endl;
-    CMarkup xml;
-    xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-    xml.AddElem( "root" );
-    xml.IntoElem();
-    xml.Save("users.xml");
+    XMLFile newXMLFile;
+//    XMLFile *newXMLFile;
+//    newXMLFile =  new XMLFile("userss.xml");
+
+//    newXMLFile->isFileInitializedProperly();
+    newXMLFile.isFileInitializedProperly();
+
     return 0;
 }
