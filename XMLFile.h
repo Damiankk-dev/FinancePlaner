@@ -16,7 +16,6 @@ public:
     std::string getFilename();
 private:
     void initializeFile();
-
 };
 
 

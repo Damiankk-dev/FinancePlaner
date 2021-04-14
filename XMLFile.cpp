@@ -3,21 +3,19 @@
 bool XMLFile::isFileInitializedProperly(){
     CMarkup xml;
     bool isXMLInitializedProperly = xml.Load( FILENAME ); //zwraca true, gdy plik ma root
-    if (isXMLInitializedProperly) {
-        std::cout << "Perfect\n";
-    } else {
-        std::cout << "So badn\n";
+    if (!isXMLInitializedProperly) {
         initializeFile();
     }
     isXMLInitializedProperly = xml.Load( FILENAME );
-    if (isXMLInitializedProperly) {
-        std::cout << "Perfect, opened\n";
-    } else {
-        std::cout << "So bad, not opened\n";
+    if (!isXMLInitializedProperly) {
+        std::cout << "Unable to initialize file\n";
     }
     return isXMLInitializedProperly;
 }
 
+std::string XMLFile::getFilename(){
+    return FILENAME;
+}
 
 void XMLFile::initializeFile(){
     CMarkup xml;
