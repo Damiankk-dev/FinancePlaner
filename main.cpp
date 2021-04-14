@@ -2,7 +2,7 @@
 
 #include "Markup.h"
 
-#include "xmlFile.h"
+#include "XMLFile.h"
 
 using namespace std;
 
