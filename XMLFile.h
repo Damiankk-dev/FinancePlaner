@@ -5,17 +5,17 @@
 
 #include "Markup.h"
 
-class XMLFile{
+class XMLFile : public CMarkup{
 
 const std::string FILENAME;
 
 public:
+    XMLFile() : FILENAME("defaultFilename.xml"){}
     XMLFile(std::string filename) : FILENAME(filename){}
     bool isFileInitializedProperly();
     std::string getFilename();
 private:
     void initializeFile();
-
 };
 
 
