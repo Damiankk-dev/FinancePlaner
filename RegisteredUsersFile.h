@@ -18,9 +18,10 @@ public:
     void saveUsersToFile();
     vector<User> loadUsersFromFile();
     void updateUserData();
+    //test zone
 private:
-    User getUserData();
     void createXMLUserChild();
+    User getUserData();
 };
 
 #endif // REGISTERED_USERS_FILE
