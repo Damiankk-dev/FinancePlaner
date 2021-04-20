@@ -16,11 +16,15 @@ char AuxiliaryMethods::readChar()
     }
     return outChar;
 }
-//
-// int AuxiliaryMethods::convertString2Int()
-//{
-//
-//}
+
+ int AuxiliaryMethods::convertString2Int(std::string number)
+{
+    int numericInt;
+    std::istringstream iss(number);
+    iss >> numericInt;
+
+    return numericInt;
+}
 // int AuxiliaryMethods::readInteger() {}
 //
 // float AuxiliaryMethods::convertString2Float() {}

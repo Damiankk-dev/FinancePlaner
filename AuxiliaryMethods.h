@@ -3,12 +3,13 @@
 
 #include <iostream>
 #include<ctime>
+#include<sstream>
 
 class AuxiliaryMethods{
 public:
     static char readChar();
 
-    static int convertString2Int();
+    static int convertString2Int(std::string);
     static int readInteger();
 
     static float convertString2Float();
