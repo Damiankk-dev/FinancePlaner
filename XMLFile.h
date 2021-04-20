@@ -10,13 +10,13 @@ class XMLFile : public CMarkup{
 const std::string FILENAME;
 
 public:
-    bool isFileEmpty = true;
     XMLFile() : FILENAME("defaultFilename.xml"){}
     XMLFile(std::string filename) : FILENAME(filename){}
+    void resetPositionAndMoveIntoRoot();
+    bool isFileEmpty = true;
     bool isFileInitializedProperly();
     bool isFileContain(std::string);
     std::string getFilename();
-    void resetPositionAndMoveIntoRoot();
 private:
     void initializeFile();
 };

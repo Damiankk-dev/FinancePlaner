@@ -17,7 +17,6 @@ public:
     void appendUserToFile(User savedUser);
     vector<User> loadUsersFromFile();
     void updateUserData(User);
-    //test zone
 private:
     User getUserData();
     vector<User> registeredUsers;

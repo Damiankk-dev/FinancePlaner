@@ -2,9 +2,7 @@
 
 void RegisteredUsersFile::appendUserToFile(User savedUser)
 {
-    this->ResetPos();
-    this->FindElem( "root" );
-    this->IntoElem();
+    this->resetPositionAndMoveIntoRoot();
     this->AddElem( "USER" );
     this->IntoElem();
     this->AddElem( "ID", savedUser.getID() );
@@ -18,8 +16,7 @@ vector<User> RegisteredUsersFile::loadUsersFromFile()
     vector<User> loadedUsers;
     RegisteredUsersFile *loadedFile = this;
     loadedFile->Load(loadedFile->getFilename() );
-    loadedFile->FindElem( "root" );
-    loadedFile->IntoElem();
+    loadedFile->resetPositionAndMoveIntoRoot();
     while (loadedFile->FindElem( "USER" ) ){
         this->isFileEmpty = false;
         loadedFile->IntoElem();
@@ -33,9 +30,6 @@ void RegisteredUsersFile::updateUserData(User userWithNewData)
     RegisteredUsersFile *loadedFile = this;
     int userID = userWithNewData.getID();
     loadedFile->resetPositionAndMoveIntoRoot();
-//    loadedFile->ResetPos();
-//    loadedFile->FindElem( "root" );
-//    loadedFile->IntoElem();
     while (loadedFile->FindElem( "USER" ) ){
         loadedFile->IntoElem();
         loadedFile->FindElem( "ID" );
