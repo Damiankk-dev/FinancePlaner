@@ -15,12 +15,11 @@ public:
     isFileInitializedProperly();
     }
     void appendUserToFile(User savedUser);
-    void saveUsersToFile();
     vector<User> loadUsersFromFile();
-    void updateUserData();
+    void updateUserData(User);
 private:
     User getUserData();
-    void createXMLUserChild();
+    vector<User> registeredUsers;
 };
 
 #endif // REGISTERED_USERS_FILE
