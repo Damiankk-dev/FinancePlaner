@@ -22,9 +22,12 @@ int main()
 
     RegisteredUsersFile* usersFile;
     usersFile = new RegisteredUsersFile("Juzerz.xml");
+//    cout << "po utworzeniu nwegfo pliku\n";
+    system("pause");
     usersFile->appendUserToFile(newUser);
     newUser = User(2, "koles", "qwer");
     usersFile->appendUserToFile(newUser);
+//    cout << "po dodaniu dwóch userów\n";
     system("pause");
 
     vector<User> loadedUsers;
@@ -37,6 +40,13 @@ int main()
     cout << "ID: " << loadedUsers[1].getID() << endl;
     cout << "username: " << loadedUsers[1].getUsername() << endl;
     cout << "password: " << loadedUsers[1].getPassword() << endl;
+
+    newUser = User(3, "koles", "qwer");
+    usersFile->appendUserToFile(newUser);
+
+    loadedUsers = usersFile->loadUsersFromFile();
+    loadedUsers[2].setUsername("Kolezkanski");
+    usersFile->updateUserData(loadedUsers[2]);
 
 //    newXMLFile->isFileInitializedProperly();
 //    newXMLFile.isFileInitializedProperly();
