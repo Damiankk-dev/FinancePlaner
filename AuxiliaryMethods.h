@@ -10,14 +10,14 @@ public:
     static char readChar();
 
     static int convertString2Int(std::string);
-    static int readInteger();
 
+    static float readFloat();
     static float convertString2Float();
 
     static std::string convertDate2String();
     static std::string convertInt2String();
     static std::string convert2String();
-    static std::string changeCommaToPeriod();
+    static void changeCommaToPeriod(std::string*);
 
     static time_t convertString2Date();
 
