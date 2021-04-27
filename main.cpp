@@ -22,7 +22,9 @@ int main()
     cout << AuxiliaryMethods::convertString2Date("1978-03-15") << endl;
     cout << AuxiliaryMethods::convertDate2String(AuxiliaryMethods::convertString2Date("1978-03-15"))<< endl;
 
-    newUserManager.registerUser();
+//    newUserManager.registerUser();
+    newUserManager.signInUser();
+    newUserManager.changeUserPassword();
 //    string s1 = "123,43";
 //    AuxiliaryMethods::changeCommaToPeriod(&s1);
 

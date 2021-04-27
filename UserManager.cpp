@@ -8,18 +8,70 @@ void UserManager::registerUser(){
     std::cout << std::endl << "Konto zalozono pomyslnie\n\n";
     system("pause");
 }
-//    void changeUserPassword();
-//    void signOutUser();
+void UserManager::changeUserPassword(){
+    AuxiliaryMethods auxiliaryMethods;
+    std::string newPassword= "";
+    std::cout << "Podaj nowe haslo: ";
+    newPassword = auxiliaryMethods.readLine();
+
+    for (vector<User>::iterator itr = users.begin(), finish = users.end(); itr != finish; itr++){
+        if (itr->getID() == signedInUserID ){
+            itr->setPassword ( newPassword );
+            registeredUsersFile.updateUserData(*itr);
+            std::cout << "Haslo zostalo zmienione.\n\n";
+            system("pause");
+        }
+    }
+}
+void UserManager::signOutUser(){
+    signedInUserID = 0;
+    system("cls");
+    std::cout << "\nWylogowano uzytkownika\n\n";
+    system("pause");
+}
 //
-//    bool isUserSignedIn();
+bool UserManager::isUserSignedIn(){
+    if ( signedInUserID > 0 ) return true;
+    else return false;
+}
 //
-//    int signInUser();
-//    int getSignedInUserID();
-//
-//private:
-//    int signedInUserID;
-//    vector<User> users;
-//    RegisteredUsersFile registeredUsersFile;
+int UserManager::signInUser(){
+    User user;
+    AuxiliaryMethods auxiliaryMethods;
+    std::string username = "", password = "";
+
+    std::cout << "\nPodaj login: ";
+    username = auxiliaryMethods.readLine();
+
+    vector<User>::iterator itr = users.begin();
+    while (itr != users.end() ) {
+        if (itr->getUsername() == username) {
+            for (int wrongAttemptsLeft = 3; wrongAttemptsLeft > 0; wrongAttemptsLeft--) {
+                std::cout << "Podaj haslo. Pozostalo prob: " << wrongAttemptsLeft << ": ";
+                password = auxiliaryMethods.readLine();
+                if (itr->getPassword() == password) {
+                    std::cout <<  "\nZalogowales sie.\n\n";
+                    system("pause");
+                    signedInUserID = itr->getID();
+                    return signedInUserID;
+                }
+            }
+            std::cout << "Wprowadzono 3 razy bledne haslo.\n";
+            system("pause");
+            signedInUserID = 0;
+            return signedInUserID;
+        }
+        itr++;
+    }
+    std::cout << "Nie ma uzytkownika z takim loginem\n\n";
+    system("pause");
+    signedInUserID = 0;
+    return signedInUserID;
+
+}
+int UserManager::getSignedInUserID(){
+    return signedInUserID;
+}
 //
 bool UserManager::isUsernameExists(std::string uniqueUsername){
     for (int i = 0; i < users.size(); i++){
