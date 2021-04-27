@@ -16,6 +16,8 @@ public:
     static std::string convertDate2String(time_t);
     static std::string convertInt2String(int);
     static std::string convert2String();
+    static std::string readLine();
+
     static void changeCommaToPeriod(std::string&);
 
     static time_t convertString2Date(std::string);

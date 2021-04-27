@@ -21,12 +21,39 @@ void UserManager::registerUser(){
 //    vector<User> users;
 //    RegisteredUsersFile registeredUsersFile;
 //
-//    bool isUsernameExists(std::string);
+bool UserManager::isUsernameExists(std::string uniqueUsername){
+    for (int i = 0; i < users.size(); i++){
+        if (users[i].getUsername() == uniqueUsername){
+            std::cout << "Podana nazwa jest juz w uzyciu, sproboj innej\n";
+            return true;
+        }
+    }
+    return false;
+}
 //    bool isPasswordCorrect();//optional
 //
-//    int getNewUserID();
+int UserManager::getNewUserID(){
+    if ( users.empty() == true ){
+        return 1;
+    } else{
+        return 1 + users.back().getID() ;
+    }
+}
 //
 User UserManager::addNewUser(){
     User newUser;
+
+    newUser.setID( getNewUserID() );
+
+    AuxiliaryMethods auxiliaryMethods;
+
+    do{
+        std::cout << "Podaj login: ";
+        newUser.setUsername(auxiliaryMethods.readLine() );
+    } while ( isUsernameExists( newUser.getUsername() ) );
+
+    std::cout << "Podaj haslo: ";
+    newUser.setPassword( auxiliaryMethods.readLine() );
+
     return newUser;
 }
