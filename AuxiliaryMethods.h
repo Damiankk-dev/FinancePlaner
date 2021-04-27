@@ -12,12 +12,12 @@ public:
     static int convertString2Int(std::string);
 
     static float readFloat();
-    static float convertString2Float();
+    static float convertString2Float(std::string);
 
-    static std::string convertDate2String();
-    static std::string convertInt2String();
+    static std::string convertDate2String(time_t);
+    static std::string convertInt2String(int);
     static std::string convert2String();
-    static void changeCommaToPeriod(std::string*);
+    static void changeCommaToPeriod(std::string&);
 
     static time_t convertString2Date();
 
