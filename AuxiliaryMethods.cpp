@@ -50,20 +50,7 @@ float AuxiliaryMethods::readFloat()
     }
     return number;
 }
-//
-// float AuxiliaryMethods::convertString2Float(std::string inputNum) {
-//    try
-//    {
-//        number = stof(inputNum) ;
-//    }
-//    catch (exception& )
-//    {
-//        std::cout << "To nie jest liczba. Zwrócona wartoœæ to 0.0" << std::endl;
-//        number = 0.0;
-//    }
-//    return number;
-// }
-//
+
  std::string AuxiliaryMethods::convertDate2String( time_t givenDate ) {
      struct tm* timeInfo;
     std::string formatedDate = "";
@@ -83,7 +70,6 @@ float AuxiliaryMethods::readFloat()
 
     return numericString;
  }
-// std::string AuxiliaryMethods::convert2String() {}
 
 void  AuxiliaryMethods::changeCommaToPeriod(std::string &numberWithComma)
 {
@@ -97,10 +83,17 @@ void  AuxiliaryMethods::changeCommaToPeriod(std::string &numberWithComma)
     }
 }
 
-float AuxiliaryMethods::convertString2Float(std::string inputNum) {
-    float number = 0.0;
-    number = stof(inputNum) ;
-    return number;
-}
-//
-// time_t AuxiliaryMethods::convertString2Date() {}
+ time_t AuxiliaryMethods::convertString2Date(std::string givenDate) {
+    int year, month,day;
+    time_t ttime;
+    struct tm * timeinfo;
+    year = stoi(givenDate.substr(0,4));
+    month = stoi(givenDate.substr(5,2));
+    day = stoi(givenDate.substr(8,2));
+    time(&ttime);
+    timeinfo = localtime (&ttime);
+    timeinfo->tm_year = year - 1900;
+    timeinfo->tm_mon = month - 1;
+    timeinfo->tm_mday = day;
+    return mktime(timeinfo);
+ }
