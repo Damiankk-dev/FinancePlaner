@@ -23,8 +23,12 @@ int main()
     cout << AuxiliaryMethods::convertDate2String(AuxiliaryMethods::convertString2Date("1978-03-15"))<< endl;
 
 //    newUserManager.registerUser();
-    newUserManager.signInUser();
-    newUserManager.changeUserPassword();
+//    newUserManager.signInUser();
+//    newUserManager.changeUserPassword();
+    if ( AuxiliaryMethods::isNumber("123.4") )
+        cout << "Number\n";
+    else
+        cout << "Not a number\n";
 //    string s1 = "123,43";
 //    AuxiliaryMethods::changeCommaToPeriod(&s1);
 

@@ -1,5 +1,12 @@
 #include "AuxiliaryMethods.h"
 
+bool AuxiliaryMethods::isNumber(const std::string& s)
+{
+    std::string::const_iterator it = s.begin();
+    while (it != s.end() && std::isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
+}
+
 char AuxiliaryMethods::readChar()
 {
     std::string input = "";
@@ -27,7 +34,6 @@ int AuxiliaryMethods::convertString2Int(std::string number)
 
     return numericInt;
 }
-
 float AuxiliaryMethods::readFloat()
 {
     std::string inputNum = "";
