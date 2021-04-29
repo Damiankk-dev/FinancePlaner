@@ -29,12 +29,12 @@ void UserManager::signOutUser(){
     std::cout << "\nWylogowano uzytkownika\n\n";
     system("pause");
 }
-//
+
 bool UserManager::isUserSignedIn(){
     if ( signedInUserID > 0 ) return true;
     else return false;
 }
-//
+
 int UserManager::signInUser(){
     User user;
     AuxiliaryMethods auxiliaryMethods;
