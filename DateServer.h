@@ -3,13 +3,15 @@
 
 #include <iostream>
 
+#include "AuxiliaryMethods.h"
+
 class DateServer{
 public:
     std::string getDateInProperFormat();
 
     bool isDateCorrect();
     bool isDateAfter2000();
-    bool isDateFormatProper();
+    bool isDateFormatProper(std::string);
 
     std::string getTodayDate();
     std::string readSystemDate();

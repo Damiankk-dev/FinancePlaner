@@ -6,6 +6,7 @@
 #include "User.h"
 #include "AuxiliaryMethods.h"
 #include "UserManager.h"
+#include "DateServer.h"
 
 #include <vector>
 
@@ -26,6 +27,23 @@ int main()
 //    newUserManager.signInUser();
 //    newUserManager.changeUserPassword();
     if ( AuxiliaryMethods::isNumber("123.4") )
+        cout << "Number\n";
+    else
+        cout << "Not a number\n";
+    DateServer dateServer;
+    if ( dateServer.isDateFormatProper("2134-43-21") )
+        cout << "Number\n";
+    else
+        cout << "Not a number\n";
+    if ( dateServer.isDateFormatProper("2134-43-211") )
+        cout << "Number\n";
+    else
+        cout << "Not a number\n";
+    if ( dateServer.isDateFormatProper("2134-4w-21") )
+        cout << "Number\n";
+    else
+        cout << "Not a number\n";
+    if ( dateServer.isDateFormatProper("2134-43.21") )
         cout << "Number\n";
     else
         cout << "Not a number\n";
