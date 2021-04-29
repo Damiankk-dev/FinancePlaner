@@ -70,6 +70,11 @@ float AuxiliaryMethods::readFloat()
 
     return numericString;
  }
+std::string AuxiliaryMethods::readLine(){
+    std::string newInput = "";
+    getline(std::cin, newInput);
+    return newInput;
+}
 
 void  AuxiliaryMethods::changeCommaToPeriod(std::string &numberWithComma)
 {
