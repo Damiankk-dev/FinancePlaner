@@ -4,8 +4,8 @@ std::string DateServer::getDateInProperFormat()
 {
     AuxiliaryMethods auxiliaryMethods;
 
-    std::cout << "Podaj date we wlsaciwym formacie (rrrr-mm-dd): ";
     while( true ){
+        std::cout << "Podaj date we wlsaciwym formacie (rrrr-mm-dd): ";
         std::string givenDate = auxiliaryMethods.readLine();
         if (isDateFormatProper(givenDate)) return givenDate;
     }
