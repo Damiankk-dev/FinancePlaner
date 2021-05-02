@@ -26,7 +26,7 @@ int main()
 //    newUserManager.registerUser();
 //    newUserManager.signInUser();
 //    newUserManager.changeUserPassword();
-    if ( AuxiliaryMethods::isNumber("123.4") )
+    if ( AuxiliaryMethods::isNumber("1234") )
         cout << "Number\n";
     else
         cout << "Not a number\n";

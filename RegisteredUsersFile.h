@@ -15,11 +15,13 @@ public:
     isFileInitializedProperly();
     }
     void appendUserToFile(User savedUser);
-    vector<User> loadUsersFromFile();
     void updateUserData(User);
+
+    vector<User> loadUsersFromFile();
 private:
-    User getUserData();
     vector<User> registeredUsers;
+
+    User getUserData();
 };
 
 #endif // REGISTERED_USERS_FILE

@@ -7,7 +7,10 @@
 
 class AuxiliaryMethods{
 public:
+    static void changeCommaToPeriod(std::string&);
+
     static bool isNumber(const std::string& s);
+
     static char readChar();
 
     static int convertString2Int(std::string);
@@ -18,8 +21,6 @@ public:
     static std::string convertInt2String(int);
     static std::string convert2String();
     static std::string readLine();
-
-    static void changeCommaToPeriod(std::string&);
 
     static time_t convertString2Date(std::string);
 
