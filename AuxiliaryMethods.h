@@ -7,6 +7,7 @@
 
 class AuxiliaryMethods{
 public:
+    static bool isNumber(const std::string& s);
     static char readChar();
 
     static int convertString2Int(std::string);

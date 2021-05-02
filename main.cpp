@@ -6,6 +6,7 @@
 #include "User.h"
 #include "AuxiliaryMethods.h"
 #include "UserManager.h"
+#include "DateServer.h"
 
 #include <vector>
 
@@ -23,10 +24,30 @@ int main()
     cout << AuxiliaryMethods::convertDate2String(AuxiliaryMethods::convertString2Date("1978-03-15"))<< endl;
 
 //    newUserManager.registerUser();
-    newUserManager.signInUser();
-    newUserManager.changeUserPassword();
-//    string s1 = "123,43";
-//    AuxiliaryMethods::changeCommaToPeriod(&s1);
+//    newUserManager.signInUser();
+//    newUserManager.changeUserPassword();
+    if ( AuxiliaryMethods::isNumber("123.4") )
+        cout << "Number\n";
+    else
+        cout << "Not a number\n";
+    DateServer dateServer;
+//    if ( dateServer.isDateFormatProper("2134-43-21") )
+//        cout << "Number\n";
+//    else
+//        cout << "Not a number\n";
+//    if ( dateServer.isDateFormatProper("2134-43-211") )
+//        cout << "Number\n";
+//    else
+//        cout << "Not a number\n";
+//    if ( dateServer.isDateFormatProper("2134-4w-21") )
+//        cout << "Number\n";
+//    else
+//        cout << "Not a number\n";
+//    if ( dateServer.isDateFormatProper("2134-43.21") )
+//        cout << "Number\n";
+//    else
+//        cout << "Not a number\n";
+    dateServer.getDateInProperFormat();
 
     return 0;
 }
