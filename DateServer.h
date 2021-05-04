@@ -10,12 +10,12 @@ public:
     std::string getDateInProperFormat();
 
     bool isDateCorrect();
-    bool isDateAfter2000();
+    bool isDateAfter2000(std::string);
     bool isDateFormatProper(std::string);
 
     std::string getTodayDate();
     std::string readSystemDate();
-    std::string isDateBefereEndOfCurrentMonth();
+    std::string isDateBeforeEndOfCurrentMonth();
 };
 
 #endif // DATE_SERVER_H

@@ -9,11 +9,20 @@ std::string DateServer::getDateInProperFormat()
         std::string givenDate = auxiliaryMethods.readLine();
         if (isDateFormatProper(givenDate)) return givenDate;
     }
-
 }
 //
 //bool isDateCorrect();
-//bool isDateAfter2000();
+bool DateServer::isDateAfter2000(std::string givenDate){
+    const int YEAR_TRESHOLD = 2000;
+    time_t newTimeFormatDate = AuxiliaryMethods::convertString2Date(givenDate);
+    if ( newTimeFormatDate == -1 ) {
+        return false;
+    }
+    tm* newTm = localtime(&newTimeFormatDate);
+    if (newTm->tm_year + 1900 > YEAR_TRESHOLD) {
+        return true;
+    }   else return false;
+}
 bool DateServer::isDateFormatProper(std::string dateToCheck)
 {
     if ( dateToCheck.length() != 10  )
@@ -43,5 +52,7 @@ bool DateServer::isDateFormatProper(std::string dateToCheck)
 }
 //
 //std::string getTodayDate();
-//std::string readSystemDate();
-//std::string isDateBefereEndOfCurrentMonth();
+std::string DateServer::readSystemDate(){
+
+}
+//std::string isDateBeforeEndOfCurrentMonth();
