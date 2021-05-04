@@ -95,12 +95,16 @@ void  AuxiliaryMethods::changeCommaToPeriod(std::string &numberWithComma)
 }
 
  time_t AuxiliaryMethods::convertString2Date(std::string givenDate) {
+    AuxiliaryMethods axmthds;
     int year, month,day;
     time_t ttime;
     struct tm * timeinfo;
     year = stoi(givenDate.substr(0,4));
     month = stoi(givenDate.substr(5,2));
     day = stoi(givenDate.substr(8,2));
+    if ( ! (axmthds.isYearValueOK(year) && axmthds.isMonthValueOK(month) && axmthds.isDayValueOK(day) ) ){
+        return -1;
+    }
     time(&ttime);
     timeinfo = localtime (&ttime);
     timeinfo->tm_year = year - 1900;
@@ -108,3 +112,12 @@ void  AuxiliaryMethods::changeCommaToPeriod(std::string &numberWithComma)
     timeinfo->tm_mday = day;
     return mktime(timeinfo);
  }
+bool AuxiliaryMethods::isYearValueOK(int year){
+    return year > 1900;
+}
+bool AuxiliaryMethods::isMonthValueOK(int month){
+    return month < 12;
+}
+bool AuxiliaryMethods::isDayValueOK(int day){
+    return day < 32;
+}
