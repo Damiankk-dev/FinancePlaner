@@ -107,6 +107,7 @@ void  AuxiliaryMethods::changeCommaToPeriod(std::string &numberWithComma)
     }
     time(&ttime);
     timeinfo = localtime (&ttime);
+
     timeinfo->tm_year = year - 1900;
     timeinfo->tm_mon = month - 1;
     timeinfo->tm_mday = day;
@@ -116,7 +117,7 @@ bool AuxiliaryMethods::isYearValueOK(int year){
     return year > 1900;
 }
 bool AuxiliaryMethods::isMonthValueOK(int month){
-    return month < 12;
+    return month < 13;
 }
 bool AuxiliaryMethods::isDayValueOK(int day){
     return day < 32;

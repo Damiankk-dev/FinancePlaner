@@ -47,9 +47,9 @@ int main()
 //        cout << "Number\n";
 //    else
 //        cout << "Not a number\n";
-//    std::string newDate = dateServer.getDateInProperFormat();
-    if (dateServer.isDateAfter2000("2187-10-33") ) {std::cout << "OK\n";}
-    else {std::cout << "BAD\n"  ;}
+    std::string newDate = dateServer.getDateInProperFormat();
+//    if (dateServer.isDateAfter2000("2187-10-33") ) {std::cout << "OK\n";}
+//    else {std::cout << "BAD\n"  ;}
 
     return 0;
 }
