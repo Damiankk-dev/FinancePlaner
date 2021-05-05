@@ -9,13 +9,16 @@ class DateServer{
 public:
     std::string getDateInProperFormat();
 
-    bool isDateCorrect();
-    bool isDateAfter2000();
     bool isDateFormatProper(std::string);
+    bool isDateConvertible(std::string);
 
-    std::string getTodayDate();
-    std::string readSystemDate();
-    std::string isDateBefereEndOfCurrentMonth();
+private:
+
+    bool isDateBeforeEndOfCurrentMonth(time_t);
+    bool isDateAfter2000(int);
+    bool isDateValueInRange(time_t);
+
+    time_t readSystemDate();
 };
 
 #endif // DATE_SERVER_H

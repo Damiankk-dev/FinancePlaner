@@ -5,15 +5,20 @@ std::string DateServer::getDateInProperFormat()
     AuxiliaryMethods auxiliaryMethods;
 
     while( true ){
-        std::cout << "Podaj date we wlsaciwym formacie (rrrr-mm-dd): ";
+        std::cout << "Podaj date z zakresu 2000-01-01\ndo konca aktualnego miesiaca\nwe wlasciwym formacie (rrrr-mm-dd): ";
         std::string givenDate = auxiliaryMethods.readLine();
-        if (isDateFormatProper(givenDate)) return givenDate;
+        if (isDateFormatProper(givenDate)) {
+            if (isDateConvertible(givenDate)){
+                time_t givenDateT = auxiliaryMethods.convertString2Date(givenDate);
+                if (isDateValueInRange(givenDateT) ) return givenDate;
+            }
+        }
     }
-
 }
-//
-//bool isDateCorrect();
-//bool isDateAfter2000();
+bool DateServer::isDateAfter2000(int givenDateYear){
+    const int YEAR_TRESHOLD = 2000;
+    return givenDateYear > YEAR_TRESHOLD;
+}
 bool DateServer::isDateFormatProper(std::string dateToCheck)
 {
     if ( dateToCheck.length() != 10  )
@@ -41,7 +46,26 @@ bool DateServer::isDateFormatProper(std::string dateToCheck)
         } else return true;
     }
 }
-//
-//std::string getTodayDate();
-//std::string readSystemDate();
-//std::string isDateBefereEndOfCurrentMonth();
+time_t DateServer::readSystemDate(){
+    time_t curTime = time(NULL);
+    return curTime;
+}
+bool DateServer::isDateBeforeEndOfCurrentMonth(time_t givenDate){
+    time_t currentSystemDate = readSystemDate();
+    struct tm *currentDate = localtime(&currentSystemDate );
+    struct tm *givenDateDetailed = localtime(&givenDate) ;
+    return givenDateDetailed->tm_year == currentDate->tm_year && givenDateDetailed->tm_mon<=currentDate->tm_mon;
+}
+bool DateServer::isDateConvertible(std::string givenDate){
+    return AuxiliaryMethods::convertString2Date(givenDate) != -1;
+}
+bool DateServer::isDateValueInRange(time_t givenDate){
+    time_t currentSystemDate = readSystemDate();
+    struct tm *currentDate = localtime(&currentSystemDate );
+    struct tm * givenDateDetailed;
+    givenDateDetailed = localtime(&givenDate);
+    if (givenDateDetailed->tm_year == currentDate->tm_year )
+        return isDateAfter2000(givenDateDetailed->tm_year + 1900) && isDateBeforeEndOfCurrentMonth(givenDate);
+    else
+        return isDateAfter2000(givenDateDetailed->tm_year + 1900);
+}

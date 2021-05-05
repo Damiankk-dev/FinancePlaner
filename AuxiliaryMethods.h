@@ -23,6 +23,10 @@ public:
     static std::string readLine();
 
     static time_t convertString2Date(std::string);
+private:
+    bool isYearValueOK(int);
+    bool isMonthValueOK(int);
+    bool isDayValueOK(int);
 
 };
 
