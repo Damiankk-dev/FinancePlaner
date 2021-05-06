@@ -15,6 +15,9 @@ void Cashflow::setDate(std::string newDate){
     date = newDate;
 }
 
+int Cashflow::getSignedInUserId(){
+    return SIGNED_USER_ID;
+}
 int Cashflow::getId(){
     return id;
 }

@@ -23,6 +23,7 @@ public:
     void setLabel(std::string newLabel);
     void setDate(std::string newDate);
 
+    int getSignedInUserId();
     int getId();
     double getValue();
     std::string getLabel();
