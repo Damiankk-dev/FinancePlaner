@@ -14,5 +14,4 @@ void CashflowCreator::setNewCashflowData(Cashflow* newCashflow){
     std::cout << "Podaj opis: ";
     newCashflow->setLabel(AuxiliaryMethods::readLine());
     newCashflow->setDate(dateServer.getDateInProperFormat());
-//    return newCashflow;
 }
