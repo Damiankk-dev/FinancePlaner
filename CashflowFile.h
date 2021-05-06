@@ -14,7 +14,7 @@ public:
         isFileInitializedProperly();
     }
     int getLastCashflowID();
-    void appendCasflowToFile();
+    void appendCasflowToFile(Cashflow*);
     std::vector<Cashflow> loadSignedInUserCashflowFromFile();
     std::vector<Cashflow> getCashflowTableByPeriod();
 private:

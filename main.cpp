@@ -53,14 +53,15 @@ int main()
 //    std::string newDate = dateServer.getDateInProperFormat();
 //    if (dateServer.isDateAfter2000("2187-10-33") ) {std::cout << "OK\n";}
 //    else {std::cout << "BAD\n"  ;}
-//    CashflowCreator cashflowCreator(1);
-//    Cashflow *newCashflow;
-//    Cashflow cashflow(1);
+    CashflowCreator cashflowCreator(1);
+    Cashflow *newCashflow;
+    Cashflow cashflow(1, 12, 12.43, "klocki", "2012-12-02");
 //    cashflowCreator.addCashflow(&cashflow);
-//    newCashflow = &cashflow;
+    newCashflow = &cashflow;
 ////    cashflow = cashflowCreator.setNewCashflowData();
-//    std::cout << "ID "<< newCashflow->getId() << " value "<< newCashflow->getValue() << " label "<< newCashflow->getLabel() << " date  "<< newCashflow->getDate() << std::endl;
-    CashflowFile newCashflowFile;
+    std::cout << "ID "<< newCashflow->getId() << " value "<< newCashflow->getValue() << " label "<< newCashflow->getLabel() << " date  "<< newCashflow->getDate() << std::endl;
+    CashflowFile newCashflowFile("eXPENSES.xml");
+    newCashflowFile.appendCasflowToFile(newCashflow);
 
 
     return 0;
