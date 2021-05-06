@@ -9,6 +9,7 @@
 #include "DateServer.h"
 #include "Cashflow.h"
 #include "CashflowCreator.h"
+#include "CashflowFile.h"
 
 #include <vector>
 
@@ -52,13 +53,14 @@ int main()
 //    std::string newDate = dateServer.getDateInProperFormat();
 //    if (dateServer.isDateAfter2000("2187-10-33") ) {std::cout << "OK\n";}
 //    else {std::cout << "BAD\n"  ;}
-    CashflowCreator cashflowCreator(1);
-    Cashflow *newCashflow;
-    Cashflow cashflow(1);
-    cashflowCreator.addCashflow(&cashflow);
-    newCashflow = &cashflow;
-//    cashflow = cashflowCreator.setNewCashflowData();
-    std::cout << "ID "<< newCashflow->getId() << " value "<< newCashflow->getValue() << " label "<< newCashflow->getLabel() << " date  "<< newCashflow->getDate() << std::endl;
+//    CashflowCreator cashflowCreator(1);
+//    Cashflow *newCashflow;
+//    Cashflow cashflow(1);
+//    cashflowCreator.addCashflow(&cashflow);
+//    newCashflow = &cashflow;
+////    cashflow = cashflowCreator.setNewCashflowData();
+//    std::cout << "ID "<< newCashflow->getId() << " value "<< newCashflow->getValue() << " label "<< newCashflow->getLabel() << " date  "<< newCashflow->getDate() << std::endl;
+    CashflowFile newCashflowFile;
 
 
     return 0;
