@@ -5,7 +5,7 @@ std::string DateServer::getDateInProperFormat()
     AuxiliaryMethods auxiliaryMethods;
 
     while( true ){
-        std::cout << "Podaj date z zakresu 2000-01-01\ndo konca aktualnego miesiaca\nwe wlasciwym formacie (rrrr-mm-dd): ";
+        std::cout << "\nPodaj date z zakresu 2000-01-01\ndo konca aktualnego miesiaca\nwe wlasciwym formacie (rrrr-mm-dd): ";
         std::string givenDate = auxiliaryMethods.readLine();
         if (isDateFormatProper(givenDate)) {
             if (isDateConvertible(givenDate)){
