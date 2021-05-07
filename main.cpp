@@ -55,15 +55,35 @@ int main()
 //    else {std::cout << "BAD\n"  ;}
     CashflowCreator cashflowCreator(1);
     Cashflow *newCashflow;
-    Cashflow cashflow(1, 17, 12.43, "klocki", "2012-12-02");
+//    cashflow = cashflowCreator.setNewCashflowData();
+    double cshfVal = 12.43;
+    Cashflow cashflow(1, 17, cshfVal, "klocki", "2012-12-02");
 //    cashflowCreator.addCashflow(&cashflow);
     newCashflow = &cashflow;
 ////    cashflow = cashflowCreator.setNewCashflowData();
-    std::cout << "ID "<< newCashflow->getId() << " value "<< newCashflow->getValue() << " label "<< newCashflow->getLabel() << " date  "<< newCashflow->getDate() << std::endl;
+//    std::cout << "ID "<< newCashflow->getId() << " value "<< newCashflow->getValue() << " label "<< newCashflow->getLabel() << " date  "<< newCashflow->getDate() << std::endl;
     CashflowFile newCashflowFile("eXPENSES.xml");
     newCashflowFile.appendCasflowToFile(newCashflow);
-    std::cout << "Last ID of user 1: "<< newCashflowFile.getLastCashflowID(1) << std::endl;
-    std::cout << "Last ID of user 2: "<< newCashflowFile.getLastCashflowID(2) << std::endl;
+//    std::cout << "Last ID of user 1: "<< newCashflowFile.getLastCashflowID(1) << std::endl;
+//    std::cout << "Last ID of user 2: "<< newCashflowFile.getLastCashflowID(2) << std::endl;
+
+    std::vector<Cashflow> cashflows;
+
+    cashflows = newCashflowFile.loadSignedInUserCashflowFromFile(1);
+    std::cout << "User 1 cashflows:\n";
+    for (std::vector<Cashflow>::iterator itr = cashflows.begin(), finish = cashflows.end();
+        itr != finish ; itr++){
+            newCashflow = &*itr;
+            std::cout << "ID "<< newCashflow->getId() << " value "<< newCashflow->getValue() << " label "<< newCashflow->getLabel() << " date  "<< newCashflow->getDate() << std::endl;
+        }
+    cashflows.clear();
+//    cashflows = newCashflowFile.loadSignedInUserCashflowFromFile(2);
+//    std::cout << "User 2 cashflows:\n";
+//    for (std::vector<Cashflow>::iterator itr = cashflows.begin(), finish = cashflows.end();
+//        itr != finish ; itr++){
+//            newCashflow = &*itr;
+//            std::cout << "ID "<< newCashflow->getId() << " value "<< newCashflow->getValue() << " label "<< newCashflow->getLabel() << " date  "<< newCashflow->getDate() << std::endl;
+//        }
 
 
     return 0;

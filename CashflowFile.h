@@ -15,12 +15,10 @@ public:
     }
     int getLastCashflowID(int);
     void appendCasflowToFile(Cashflow*);
-    std::vector<Cashflow> loadSignedInUserCashflowFromFile();
+    std::vector<Cashflow> loadSignedInUserCashflowFromFile(int);
     std::vector<Cashflow> getCashflowTableByPeriod();
 private:
     int lastCashflowId;
     void getLastCashflowIDFromFile(int);
-    Cashflow getSingleCashflowData();
-
 };
 #endif // CASHFLOW_FILE_H
