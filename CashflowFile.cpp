@@ -1,21 +1,8 @@
 #include "CashflowFile.h"
 
 int CashflowFile::getLastCashflowID(int signedInUserId){
-    CashflowFile *loadedFile = this;
-    int cashflowId = 0;
-    loadedFile->Load(loadedFile->getFilename() );
-    loadedFile->resetPositionAndMoveIntoRoot();
-    while (loadedFile->FindElem( "CASHFLOW" ) ){
-        loadedFile->IntoElem();
-        loadedFile->FindElem( "USER_ID" );
-            if (stoi ( this->GetData() ) == signedInUserId ){
-                loadedFile->FindElem( "ID" );
-                cashflowId = stoi (this->GetData());
-            }
-        loadedFile->OutOfElem();
-    }
-    return cashflowId;
-
+    getLastCashflowIDFromFile(signedInUserId);
+    return lastCashflowId;
 }
 void CashflowFile::appendCasflowToFile(Cashflow* cashflow){
     this->resetPositionAndMoveIntoRoot();
@@ -31,5 +18,19 @@ void CashflowFile::appendCasflowToFile(Cashflow* cashflow){
 }
 std::vector<Cashflow> CashflowFile::loadSignedInUserCashflowFromFile(){}
 std::vector<Cashflow> CashflowFile::getCashflowTableByPeriod(){}
-int CashflowFile::getLastCashflowIDFromFile(){}
+void CashflowFile::getLastCashflowIDFromFile(int signedInUserId){
+    CashflowFile *loadedFile = this;
+    lastCashflowId = 0;
+    loadedFile->Load(loadedFile->getFilename() );
+    loadedFile->resetPositionAndMoveIntoRoot();
+    while (loadedFile->FindElem( "CASHFLOW" ) ){
+        loadedFile->IntoElem();
+        loadedFile->FindElem( "USER_ID" );
+            if (stoi ( this->GetData() ) == signedInUserId ){
+                loadedFile->FindElem( "ID" );
+                lastCashflowId = stoi (this->GetData());
+            }
+        loadedFile->OutOfElem();
+    }
+}
 Cashflow CashflowFile::getSingleCashflowData(){}

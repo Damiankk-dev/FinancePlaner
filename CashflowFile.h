@@ -9,7 +9,7 @@
 
 class CashflowFile : public XMLFile{
 public:
-    CashflowFile(): XMLFile("defaultFilenamee.xml"){}
+    CashflowFile(): XMLFile("defaultFilename.xml"){}
     CashflowFile(std::string cashflowFilename): XMLFile(cashflowFilename) {
         isFileInitializedProperly();
     }
@@ -18,7 +18,8 @@ public:
     std::vector<Cashflow> loadSignedInUserCashflowFromFile();
     std::vector<Cashflow> getCashflowTableByPeriod();
 private:
-    int getLastCashflowIDFromFile();
+    int lastCashflowId;
+    void getLastCashflowIDFromFile(int);
     Cashflow getSingleCashflowData();
 
 };
