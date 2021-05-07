@@ -81,6 +81,11 @@ std::string AuxiliaryMethods::readLine(){
     getline(std::cin, newInput);
     return newInput;
 }
+std::string AuxiliaryMethods::convertFloat2String( float number ){
+    std::ostringstream ss;
+    ss << number;
+    return ss.str();
+}
 
 void  AuxiliaryMethods::changeCommaToPeriod(std::string &numberWithComma)
 {
