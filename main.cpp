@@ -55,13 +55,15 @@ int main()
 //    else {std::cout << "BAD\n"  ;}
     CashflowCreator cashflowCreator(1);
     Cashflow *newCashflow;
-    Cashflow cashflow(1, 12, 12.43, "klocki", "2012-12-02");
+    Cashflow cashflow(1, 17, 12.43, "klocki", "2012-12-02");
 //    cashflowCreator.addCashflow(&cashflow);
     newCashflow = &cashflow;
 ////    cashflow = cashflowCreator.setNewCashflowData();
     std::cout << "ID "<< newCashflow->getId() << " value "<< newCashflow->getValue() << " label "<< newCashflow->getLabel() << " date  "<< newCashflow->getDate() << std::endl;
     CashflowFile newCashflowFile("eXPENSES.xml");
     newCashflowFile.appendCasflowToFile(newCashflow);
+    std::cout << "Last ID of user 1: "<< newCashflowFile.getLastCashflowID(1) << std::endl;
+    std::cout << "Last ID of user 2: "<< newCashflowFile.getLastCashflowID(2) << std::endl;
 
 
     return 0;

@@ -2,20 +2,19 @@
 
 int CashflowFile::getLastCashflowID(int signedInUserId){
     CashflowFile *loadedFile = this;
+    int cashflowId = 0;
     loadedFile->Load(loadedFile->getFilename() );
     loadedFile->resetPositionAndMoveIntoRoot();
-    while (loadedFile->FindElem( "USER_ID" ) ){
-//        loadedFile->IntoElem();
-        std::cout << loadedFile->GetData() << std::endl;
-//            if (stoi ( this->GetData() ) == signedInUserId ){
-//                std::cout << "cukces\n";
-//            }
-//        this->isFileEmpty = false;
-//        loadedFile->IntoElem();
-//        loadedUsers.push_back(getUserData() );
-//        loadedFile->OutOfElem();
+    while (loadedFile->FindElem( "CASHFLOW" ) ){
+        loadedFile->IntoElem();
+        loadedFile->FindElem( "USER_ID" );
+            if (stoi ( this->GetData() ) == signedInUserId ){
+                loadedFile->FindElem( "ID" );
+                cashflowId = stoi (this->GetData());
+            }
+        loadedFile->OutOfElem();
     }
-    return 0;
+    return cashflowId;
 
 }
 void CashflowFile::appendCasflowToFile(Cashflow* cashflow){
