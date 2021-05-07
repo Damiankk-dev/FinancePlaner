@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include<ctime>
-#include<sstream>
+#include <sstream>
 
 class AuxiliaryMethods{
 public:
@@ -21,6 +21,7 @@ public:
     static std::string convertInt2String(int);
     static std::string convert2String();
     static std::string readLine();
+    static std::string convertFloat2String( float );
 
     static time_t convertString2Date(std::string);
 private:
