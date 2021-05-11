@@ -17,7 +17,7 @@ public:
     , SIGNED_IN_USER_ID(signedInUserId){}
 
     void showCasflowData(Cashflow* newCashflow);
-    void addCashflow(Cashflow* newCashflow);
+    void addCashflow();
     //testy
 private:
     CashflowFile cashflowFile;
