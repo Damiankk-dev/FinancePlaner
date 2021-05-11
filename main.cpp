@@ -53,11 +53,11 @@ int main()
 //    std::string newDate = dateServer.getDateInProperFormat();
 //    if (dateServer.isDateAfter2000("2187-10-33") ) {std::cout << "OK\n";}
 //    else {std::cout << "BAD\n"  ;}
-    CashflowCreator cashflowCreator(1);
+    CashflowCreator cashflowCreator();
     Cashflow *newCashflow;
 //    cashflow = cashflowCreator.setNewCashflowData();
-    double cshfVal = 12.43;
-    Cashflow cashflow(1, 17, cshfVal, "klocki", "2012-12-02");
+    double cshfVal = 12.93;
+    Cashflow cashflow(1, 18, cshfVal, "klocki", "2012-12-02");
 //    cashflowCreator.addCashflow(&cashflow);
     newCashflow = &cashflow;
 ////    cashflow = cashflowCreator.setNewCashflowData();
