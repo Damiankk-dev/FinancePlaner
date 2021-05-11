@@ -9,6 +9,7 @@ void CashflowCreator::addCashflow(Cashflow* newCashflow){
 //int setCashflowID();
 void CashflowCreator::setNewCashflowData(Cashflow* newCashflow){
     DateServer dateServer;
+    newCashflow->setId( setCashflowID() );
     std::cout << "Podaj wartosc: ";
     newCashflow->setValue(AuxiliaryMethods::readFloat());
     std::cout << "Podaj opis: ";
@@ -17,5 +18,5 @@ void CashflowCreator::setNewCashflowData(Cashflow* newCashflow){
 }
 
 int CashflowCreator::setCashflowID(){
-
+    return cashflowFile.getLastCashflowID(SIGNED_IN_USER_ID);
 }
