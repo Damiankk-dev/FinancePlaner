@@ -2,7 +2,8 @@
 
 
 //void showCasflowData();
-void CashflowCreator::addCashflow(Cashflow* newCashflow){
+void CashflowCreator::addCashflow(){
+    Cashflow* newCashflow;
     setNewCashflowData(newCashflow);
 }
 //
