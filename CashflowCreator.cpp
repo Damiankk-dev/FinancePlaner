@@ -15,3 +15,7 @@ void CashflowCreator::setNewCashflowData(Cashflow* newCashflow){
     newCashflow->setLabel(AuxiliaryMethods::readLine());
     newCashflow->setDate(dateServer.getDateInProperFormat());
 }
+
+int CashflowCreator::setCashflowID(){
+
+}
