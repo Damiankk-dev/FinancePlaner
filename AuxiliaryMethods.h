@@ -4,6 +4,7 @@
 #include <iostream>
 #include<ctime>
 #include <sstream>
+#include <vector>
 
 class AuxiliaryMethods{
 public:
@@ -22,9 +23,11 @@ public:
     static std::string convert2String();
     static std::string readLine();
     static std::string convertFloat2String( float );
+    static std::vector<std::string> splitStringWithDelim( std::string, char );
 
     static time_t convertString2Date(std::string);
 private:
+    void split(const std::string &s, char delim, std::vector<std::string> &elems);
     bool isYearValueOK(int);
     bool isMonthValueOK(int);
     bool isDayValueOK(int);
