@@ -1,5 +1,6 @@
 #include "FinanceOrganizer.h"
 
 void FinanceOrganizer::createNewCashflow(int signedInUserId, std::string cashflowFilename){
-//    CashflowCreator()
+    CashflowCreator cashflowCreator(signedInUserId, cashflowFilename);
+    cashflowCreator.addCashflow();
 }
