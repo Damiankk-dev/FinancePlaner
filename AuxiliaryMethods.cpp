@@ -86,7 +86,13 @@ std::string AuxiliaryMethods::convertFloat2String( float number ){
     ss << number;
     return ss.str();
 }
-
+std::vector<std::string>
+AuxiliaryMethods::splitStringWithDelim( const std::string givenString, char delim ){
+    AuxiliaryMethods axmthds;
+    std::vector<std::string> elems;
+    axmthds.split(givenString, delim, elems);
+    return elems;
+}
 void  AuxiliaryMethods::changeCommaToPeriod(std::string &numberWithComma)
 {
     for (int i = 0; i < numberWithComma.length() ; i++)
@@ -126,4 +132,12 @@ bool AuxiliaryMethods::isMonthValueOK(int month){
 }
 bool AuxiliaryMethods::isDayValueOK(int day){
     return day < 32;
+}
+
+void AuxiliaryMethods::split(const std::string &s, char delim, std::vector<std::string> &elems) {
+    std::stringstream ss(s);
+    std::string item;
+    while (getline(ss, item, delim)) {
+        elems.push_back(item);
+    }
 }
