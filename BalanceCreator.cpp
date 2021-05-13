@@ -7,34 +7,11 @@
 //float BalanceCreator::calculateBalance();
 //float BalanceCreator::calculateIncome();
 //float BalanceCreator::calculateExpense();
-//
-//TODO: Testy dzia³ania metody
-//TODO: Rozbicie na mniejsze metody
 void BalanceCreator::loadCasfhlowsFromFileByGivenPeriod(){
     incomes = incomesFile.loadSignedInUserCashflowFromFile(SIGNED_IN_USER_ID);
     expenses = expensesFile.loadSignedInUserCashflowFromFile(SIGNED_IN_USER_ID);
-
-    std::vector<Cashflow> lmitedExpenses;
-    std::vector<std::string> givenPeriod = AuxiliaryMethods::splitStringWithDelim(balancePeriod, '|');
-
-    for (std::vector<Cashflow>::iterator itr = expenses.begin(), finish = expenses.end();
-    itr != finish; itr++){
-        std::string currentCashflowDate = itr->getDate();
-        std::string lowerThresholdDate = givenPeriod[0];
-        std::string upperThresholdDate = givenPeriod[1];
-        if (!( (isDate1Older(currentCashflowDate, lowerThresholdDate ) )
-            || isDate1Older(upperThresholdDate, currentCashflowDate) ) ){
-                lmitedExpenses.push_back(*itr);
-            }
-    }
-    expenses = lmitedExpenses;
-
-    for (std::vector<Cashflow>::iterator itr = expenses.begin(), finish = expenses.end();
-    itr != finish; itr++){
-            std::cout << "ID "<< itr->getId() << " value "<< itr->getValue()
-            << " label "<< itr->getLabel() << " date  "<< itr->getDate() << std::endl;
-    }
-
+    limitCashflowByGivenPeriod(expenses);
+    limitCashflowByGivenPeriod(incomes);
 }
 
 bool BalanceCreator::isDate1Older(std::string date1, std::string date2){
@@ -45,6 +22,21 @@ bool BalanceCreator::isDate1Older(std::string date1, std::string date2){
     return difftime(ttime1, ttime2) <= 0 ;
 }
 
-bool isDateInPeriod(std::string date, std::string period){
+bool BalanceCreator::isDateInPeriod(std::string givenDate, std::string givenPeriod){
+    std::vector<std::string> period = AuxiliaryMethods::splitStringWithDelim(givenPeriod, '|');
+    std::string lowerThresholdDate = period[0];
+    std::string upperThresholdDate = period[1];
+    return !( (isDate1Older(givenDate, lowerThresholdDate ) )
+        || isDate1Older(upperThresholdDate, givenDate) );
+}
 
+void BalanceCreator::limitCashflowByGivenPeriod(std::vector<Cashflow> &cahsflowToLimit){
+    std::vector<Cashflow> limitedExpenses;
+
+    for (std::vector<Cashflow>::iterator itr = cahsflowToLimit.begin(), finish = cahsflowToLimit.end();
+    itr != finish; itr++){
+        std::string currentCashflowDate = itr->getDate();
+        if (isDateInPeriod(currentCashflowDate, balancePeriod) ) limitedExpenses.push_back(*itr);
+    }
+    cahsflowToLimit = limitedExpenses;
 }

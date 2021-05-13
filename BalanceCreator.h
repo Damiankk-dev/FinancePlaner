@@ -35,6 +35,7 @@ private:
 
     void sortBalanceByDateOldest();
     void showCashflowTable();
+    void limitCashflowByGivenPeriod(std::vector<Cashflow> &cahsflowToLimit);
 
     float calculateBalance();
     float calculateIncome();
