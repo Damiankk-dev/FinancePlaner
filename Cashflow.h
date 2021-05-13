@@ -6,7 +6,7 @@
 #include "DateServer.h"
 
 class Cashflow{
-    const int SIGNED_USER_ID;
+    int SIGNED_USER_ID;
     int id;
     double value;
     std::string label;
