@@ -22,6 +22,10 @@ public:
         balancePeriod = periodServer.specifyPeriod();
     }
     void showBalanceByGivenPeriod();
+    //tests
+
+    void loadCasfhlowsFromFileByGivenPeriod();
+
 private:
     std::vector<Cashflow> incomes;
     std::vector<Cashflow> expenses;
@@ -36,8 +40,8 @@ private:
     float calculateIncome();
     float calculateExpense();
 
-    void loadCasfhlowsFromFileByGivenPeriod();
-    bool isDate1Older( std::string , std::string );
+    bool isDate1Older( std::string, std::string );
+    bool isDateInPeriod(std::string, std::string );
 };
 
 #endif // BALANCE_CREATOR_H
