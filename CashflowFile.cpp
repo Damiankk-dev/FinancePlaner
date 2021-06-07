@@ -16,7 +16,7 @@ void CashflowFile::appendCasflowToFile(Cashflow* cashflow){
     this->Save(this->getFilename());
     this->ResetPos();
 }
-std::vector<Cashflow> CashflowFile::getCashflowTableByPeriod(){}
+//std::vector<Cashflow> CashflowFile::getCashflowTableByPeriod(){}
 void CashflowFile::getLastCashflowIDFromFile(int signedInUserId){
     lastCashflowId = 0;
     CashflowFile *loadedFile = this;

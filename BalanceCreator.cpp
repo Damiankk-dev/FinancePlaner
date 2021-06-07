@@ -5,13 +5,27 @@
 //void BalanceCreator::showCashflowTable();
 //
 //float BalanceCreator::calculateBalance();
-//float BalanceCreator::calculateIncome();
-//float BalanceCreator::calculateExpense();
+//float BalanceCreator::calculateIncome(){
+//
+//}
+float BalanceCreator::calculateBalance(){
+    return calculateCashflow(incomes) - calculateCashflow(expenses);
+}
+
+float BalanceCreator::calculateCashflow(std::vector<Cashflow> &cahsflowToCalculate){
+    float sum = 0.0;
+    for (std::vector<Cashflow>::iterator itr = cahsflowToCalculate.begin(), finish = cahsflowToCalculate.end();
+    itr != finish; itr++){
+        sum += itr->getValue();
+    }
+    return sum;
+}
 void BalanceCreator::loadCasfhlowsFromFileByGivenPeriod(){
     incomes = incomesFile.loadSignedInUserCashflowFromFile(SIGNED_IN_USER_ID);
     expenses = expensesFile.loadSignedInUserCashflowFromFile(SIGNED_IN_USER_ID);
     limitCashflowByGivenPeriod(expenses);
     limitCashflowByGivenPeriod(incomes);
+    calculateCashflow(expenses);
 }
 
 bool BalanceCreator::isDate1Older(std::string date1, std::string date2){

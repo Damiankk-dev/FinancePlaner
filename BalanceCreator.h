@@ -38,8 +38,7 @@ private:
     void limitCashflowByGivenPeriod(std::vector<Cashflow> &cahsflowToLimit);
 
     float calculateBalance();
-    float calculateIncome();
-    float calculateExpense();
+    float calculateCashflow(std::vector<Cashflow>&);
 
     bool isDate1Older( std::string, std::string );
     bool isDateInPeriod(std::string, std::string );
