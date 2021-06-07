@@ -11,6 +11,7 @@
 #include "CashflowCreator.h"
 #include "CashflowFile.h"
 #include "FinanceOrganizer.h"
+#include "BalanceCreator.h"
 
 #include <vector>
 
@@ -85,7 +86,9 @@ int main()
 //            newCashflow = &*itr;
 //            std::cout << "ID "<< newCashflow->getId() << " value "<< newCashflow->getValue() << " label "<< newCashflow->getLabel() << " date  "<< newCashflow->getDate() << std::endl;
 //        }
-    FinanceOrganizer financeOrganizer( 1, "incomes.xml", "eXPENSES.xml" );
-    financeOrganizer.createNewCashflow(1, "eXPENSES.xml");
+//    FinanceOrganizer financeOrganizer( 1, "incomes.xml", "eXPENSES.xml" );
+//    financeOrganizer.createNewCashflow(1, "eXPENSES.xml");
+    BalanceCreator newBalance(1, "incomes.xml", "eXPENSES.xml" );
+    newBalance.loadCasfhlowsFromFileByGivenPeriod();
     return 0;
 }
