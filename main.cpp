@@ -89,6 +89,6 @@ int main()
 //    FinanceOrganizer financeOrganizer( 1, "incomes.xml", "eXPENSES.xml" );
 //    financeOrganizer.createNewCashflow(1, "eXPENSES.xml");
     BalanceCreator newBalance(1, "incomes.xml", "eXPENSES.xml" );
-    newBalance.loadCasfhlowsFromFileByGivenPeriod();
+    newBalance.showBalanceByGivenPeriod();
     return 0;
 }

@@ -24,7 +24,6 @@ public:
     void showBalanceByGivenPeriod();
     //tests
 
-    void loadCasfhlowsFromFileByGivenPeriod();
 
 private:
     std::vector<Cashflow> incomes;
@@ -34,8 +33,9 @@ private:
     CashflowFile expensesFile;
 
     void sortBalanceByDateOldest();
-    void showCashflowTable();
+    void showCashflowTable(std::vector<Cashflow>&);
     void limitCashflowByGivenPeriod(std::vector<Cashflow> &cahsflowToLimit);
+    void loadCasfhlowsFromFileByGivenPeriod();
 
     float calculateBalance();
     float calculateCashflow(std::vector<Cashflow>&);
