@@ -20,7 +20,9 @@ float BalanceCreator::calculateCashflow(std::vector<Cashflow> &cahsflowToCalcula
     }
     return sum;
 }
-
+void BalanceCreator::sortCashflowByDateOldest(std::vector<Cashflow> &cahsflowToSort){
+    sort(cahsflowToSort.begin(), cahsflowToSort.end(), isCashflow1Older);
+}
 void BalanceCreator::showBalanceByGivenPeriod(){
     loadCasfhlowsFromFileByGivenPeriod();
     std::cout << "\nWydatki:\n";
@@ -35,6 +37,8 @@ void BalanceCreator::loadCasfhlowsFromFileByGivenPeriod(){
     expenses = expensesFile.loadSignedInUserCashflowFromFile(SIGNED_IN_USER_ID);
     limitCashflowByGivenPeriod(expenses);
     limitCashflowByGivenPeriod(incomes);
+    sortCashflowByDateOldest(incomes);
+    sortCashflowByDateOldest(expenses);
 }
 
 void BalanceCreator::showCashflowTable(std::vector<Cashflow> &cahsflowToShow){
@@ -64,6 +68,9 @@ bool BalanceCreator::isDateInPeriod(std::string givenDate, std::string givenPeri
     std::string upperThresholdDate = period[1];
     return !( (isDate1Older(givenDate, lowerThresholdDate ) )
         || isDate1Older(upperThresholdDate, givenDate) );
+}
+bool BalanceCreator::isCashflow1Older(Cashflow c1, Cashflow c2){
+    return isDate1Older(c1.getDate(), c2.getDate());
 }
 
 void BalanceCreator::limitCashflowByGivenPeriod(std::vector<Cashflow> &cahsflowToLimit){

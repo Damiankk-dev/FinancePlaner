@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 #include "Cashflow.h"
 #include "CashflowFile.h"
@@ -32,7 +33,7 @@ private:
     CashflowFile incomesFile;
     CashflowFile expensesFile;
 
-    void sortBalanceByDateOldest();
+    void sortCashflowByDateOldest(std::vector<Cashflow>&);
     void showCashflowTable(std::vector<Cashflow>&);
     void limitCashflowByGivenPeriod(std::vector<Cashflow> &cahsflowToLimit);
     void loadCasfhlowsFromFileByGivenPeriod();
@@ -40,8 +41,9 @@ private:
     float calculateBalance();
     float calculateCashflow(std::vector<Cashflow>&);
 
-    bool isDate1Older( std::string, std::string );
+    static bool isDate1Older( std::string, std::string );
     bool isDateInPeriod(std::string, std::string );
+    static bool isCashflow1Older(Cashflow, Cashflow);
 };
 
 #endif // BALANCE_CREATOR_H
