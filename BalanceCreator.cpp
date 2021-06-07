@@ -20,12 +20,34 @@ float BalanceCreator::calculateCashflow(std::vector<Cashflow> &cahsflowToCalcula
     }
     return sum;
 }
+
+void BalanceCreator::showBalanceByGivenPeriod(){
+    loadCasfhlowsFromFileByGivenPeriod();
+    std::cout << "\nWydatki:\n";
+    showCashflowTable(expenses);
+    std::cout << "\nPrzychody:\n";
+    showCashflowTable(incomes);
+    std::cout << "\nBalance: " << calculateBalance() << std::endl;
+}
+
 void BalanceCreator::loadCasfhlowsFromFileByGivenPeriod(){
     incomes = incomesFile.loadSignedInUserCashflowFromFile(SIGNED_IN_USER_ID);
     expenses = expensesFile.loadSignedInUserCashflowFromFile(SIGNED_IN_USER_ID);
     limitCashflowByGivenPeriod(expenses);
     limitCashflowByGivenPeriod(incomes);
-    calculateCashflow(expenses);
+}
+
+void BalanceCreator::showCashflowTable(std::vector<Cashflow> &cahsflowToShow){
+    std::cout << std::endl << "L.p. " << " | " << " data " << " | " << " wartosc " << " | " << " nazwa "  << std::endl;
+    int i = 1;
+    for (std::vector<Cashflow>::iterator itr = cahsflowToShow.begin(), finish = cahsflowToShow.end();
+    itr != finish; itr++){
+        std::cout << i++ << " | "
+        << itr->getDate() << " | "
+        << itr->getValue() << " | "
+        << itr->getLabel() << std::endl;
+    }
+    std::cout << "\t   Suma: " << calculateCashflow(cahsflowToShow) << std::endl;
 }
 
 bool BalanceCreator::isDate1Older(std::string date1, std::string date2){
