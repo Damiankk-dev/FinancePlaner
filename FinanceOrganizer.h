@@ -6,6 +6,7 @@
 
 #include "Cashflow.h"
 #include "CashflowCreator.h"
+#include "BalanceCreator.h"
 
 class FinanceOrganizer {
 public:
@@ -15,7 +16,7 @@ public:
     , SIGNED_IN_USER_ID(signedInUserId)
     {}
     void createNewCashflow(int, std::string);
-    void showBalanceByGivenPeriod(int, std::string);
+    void showBalanceByGivenPeriod(int);
 private:
     std::vector<Cashflow> cashflows;
     const std::string INCEOMES_FILENAME;
