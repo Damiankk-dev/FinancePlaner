@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include "AuxiliaryMethods.h"
+
 class TextMenu{
 public:
     void showMainMenu();
