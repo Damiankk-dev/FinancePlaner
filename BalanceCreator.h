@@ -41,7 +41,6 @@ private:
     float calculateBalance();
     float calculateCashflow(std::vector<Cashflow>&);
 
-    static bool isDate1Older( std::string, std::string );
     bool isDateInPeriod(std::string, std::string );
     static bool isCashflow1Older(Cashflow, Cashflow);
 };

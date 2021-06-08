@@ -1,16 +1,20 @@
 #ifndef AUXILIARY_METHODS_H
 #define AUXILIARY_METHODS_H
 
+#include "Cashflow.h"
+
 #include <iostream>
-#include<ctime>
+#include <ctime>
 #include <sstream>
 #include <vector>
+
 
 class AuxiliaryMethods{
 public:
     static void changeCommaToPeriod(std::string&);
 
     static bool isNumber(const std::string& s);
+    static bool isDate1Older( std::string, std::string );
 
     static char readChar();
 

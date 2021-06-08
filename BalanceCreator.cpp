@@ -20,9 +20,6 @@ float BalanceCreator::calculateCashflow(std::vector<Cashflow> &cahsflowToCalcula
     }
     return sum;
 }
-void BalanceCreator::sortCashflowByDateOldest(std::vector<Cashflow> &cahsflowToSort){
-    sort(cahsflowToSort.begin(), cahsflowToSort.end(), isCashflow1Older);
-}
 void BalanceCreator::showBalanceByGivenPeriod(){
     loadCasfhlowsFromFileByGivenPeriod();
     std::cout << "\nWydatki:\n";
@@ -54,23 +51,19 @@ void BalanceCreator::showCashflowTable(std::vector<Cashflow> &cahsflowToShow){
     std::cout << "\t   Suma: " << calculateCashflow(cahsflowToShow) << std::endl;
 }
 
-bool BalanceCreator::isDate1Older(std::string date1, std::string date2){
-    time_t ttime1;
-    time_t ttime2;
-    ttime1 = AuxiliaryMethods::convertString2Date(date1);
-    ttime2 = AuxiliaryMethods::convertString2Date(date2);
-    return difftime(ttime1, ttime2) <= 0 ;
+void BalanceCreator::sortCashflowByDateOldest(std::vector<Cashflow> &cashflowToSort){
+    sort(cashflowToSort.begin(), cashflowToSort.end(), isCashflow1Older);
 }
 
 bool BalanceCreator::isDateInPeriod(std::string givenDate, std::string givenPeriod){
     std::vector<std::string> period = AuxiliaryMethods::splitStringWithDelim(givenPeriod, '|');
     std::string lowerThresholdDate = period[0];
     std::string upperThresholdDate = period[1];
-    return !( (isDate1Older(givenDate, lowerThresholdDate ) )
-        || isDate1Older(upperThresholdDate, givenDate) );
+    return !( (AuxiliaryMethods::isDate1Older(givenDate, lowerThresholdDate ) )
+        || AuxiliaryMethods::isDate1Older(upperThresholdDate, givenDate) );
 }
 bool BalanceCreator::isCashflow1Older(Cashflow c1, Cashflow c2){
-    return isDate1Older(c1.getDate(), c2.getDate());
+    return AuxiliaryMethods::isDate1Older(c1.getDate(), c2.getDate());
 }
 
 void BalanceCreator::limitCashflowByGivenPeriod(std::vector<Cashflow> &cahsflowToLimit){
