@@ -29,10 +29,10 @@ void FinanceManagerInterface::changeUserPassword(){
     userManager.changeUserPassword();
 }
 void FinanceManagerInterface::addIncome(){
-
+    financeOrganizer->createNewCashflow(userManager.getSignedInUserID(), INCOMES_FILENAME);
 }
 void FinanceManagerInterface::addExpense(){
-
+    financeOrganizer->createNewCashflow(userManager.getSignedInUserID(), EXPENSES_FILENAME);
 }
 void FinanceManagerInterface::createBalanceCurrentMonth(){
 
