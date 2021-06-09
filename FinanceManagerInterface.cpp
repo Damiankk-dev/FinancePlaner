@@ -26,7 +26,7 @@ void FinanceManagerInterface::signOutUser(){
     financeOrganizer = NULL;
 }
 void FinanceManagerInterface::changeUserPassword(){
-
+    userManager.changeUserPassword();
 }
 void FinanceManagerInterface::addIncome(){
 
