@@ -23,7 +23,7 @@ public:
     int getSignedInUserID();
 
 private:
-    int signedInUserID;
+    int signedInUserID = 0;
     vector<User> users;
     RegisteredUsersFile registeredUsersFile;
 
