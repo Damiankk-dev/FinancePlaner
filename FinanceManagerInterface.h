@@ -13,12 +13,9 @@ class FinanceManagerInterface{
     const std::string INCOMES_FILENAME;
     const std::string EXPENSES_FILENAME;
 
-    void showMainMenu();
-    void showSubmenuSignedInUser();
-    bool isUserRegistered();
+
 
 public:
-    char mainMenuChoice;
     FinanceManagerInterface( std::string registeredUsersFilename, std::string incomesFilename, std::string expensesFilename)
     : userManager(registeredUsersFilename)
     , INCOMES_FILENAME(incomesFilename)
@@ -30,6 +27,9 @@ public:
         delete financeOrganizer;
         financeOrganizer = NULL;
     }
+    char mainMenuChoice;
+    void showMainMenu();
+    void showSubmenuSignedInUser();
     void registerUser();
     void signInUser();
     void signOutUser();
@@ -39,5 +39,7 @@ public:
     void createBalanceCurrentMonth();
     void createBalancePastMonth();
     void createBalanceAnyPeriod();
+    bool isUserRegistered();
+    //tests
 };
 #endif // FINANCE_MANAGER_INTERFACE_H
