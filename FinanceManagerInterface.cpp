@@ -21,7 +21,9 @@ void FinanceManagerInterface::signInUser(){
     financeOrganizer = new FinanceOrganizer(userManager.getSignedInUserID(), INCOMES_FILENAME, EXPENSES_FILENAME);
 }
 void FinanceManagerInterface::signOutUser(){
-
+    userManager.signOutUser();
+    delete financeOrganizer;
+    financeOrganizer = NULL;
 }
 void FinanceManagerInterface::changeUserPassword(){
 
