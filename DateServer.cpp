@@ -69,3 +69,62 @@ bool DateServer::isDateValueInRange(time_t givenDate){
     else
         return isDateAfter2000(givenDateDetailed->tm_year + 1900);
 }
+
+bool DateServer::isLeap(unsigned year) {
+    if (((year%4 == 0)&& (year%100 != 0)) || (year%400 == 0)) return true;
+    else return false ;
+}
+
+std::string DateServer::getCurrentMonthBeginingDate(){
+    time_t currentSystemDate = readSystemDate();
+    struct tm *currentDate = localtime(&currentSystemDate );
+
+    int monthNum = 1 + currentDate->tm_mon;
+    int yearNum = 1900 + currentDate->tm_year;
+    std::string currentMonthBegDate = AuxiliaryMethods::convertInt2String(yearNum);
+    currentMonthBegDate += "-";
+    currentMonthBegDate += AuxiliaryMethods::convertInt2String(monthNum);
+    currentMonthBegDate += "-01";
+    std::cout << "Poczatek aktualnego mieiaca: " << currentMonthBegDate << "\n";
+    return currentMonthBegDate;
+//    if ( monthNum < 8 ) {
+//        if ( monthNum % 2 != 0 ) {
+//            daysInMonth = 31;
+//        } else if ( monthNum == 2 ) {
+//            if ( isLeap(yearNum) ) daysInMonth = 29;
+//            else daysInMonth = 28;
+//        } else {
+//            daysInMonth = 30;
+//        }
+//    } else {
+//        if ( monthNum % 2 != 0 ) {
+//            daysInMonth = 30;
+//        } else {
+//            daysInMonth = 31;
+//        }
+//    }
+}
+std::string DateServer::getPastMonthBeginingDate(){
+    time_t currentSystemDate = readSystemDate();
+    struct tm *currentDate = localtime(&currentSystemDate );
+
+    int monthNum = 1 + currentDate->tm_mon - 1;
+    int yearNum = 1900 + currentDate->tm_year;
+        std::string currentMonthBegDate = "";
+    if (monthNum != 0){
+        currentMonthBegDate += AuxiliaryMethods::convertInt2String(yearNum);
+        currentMonthBegDate += "-";
+        currentMonthBegDate += AuxiliaryMethods::convertInt2String(monthNum);
+        currentMonthBegDate += "-01";
+        std::cout << "Poczatek poprzedniego mieiaca: " << currentMonthBegDate << "\n";
+    } else {
+        monthNum = 12;
+        yearNum -= 1;
+        currentMonthBegDate += AuxiliaryMethods::convertInt2String(yearNum);
+        currentMonthBegDate += "-";
+        currentMonthBegDate += AuxiliaryMethods::convertInt2String(monthNum);
+        currentMonthBegDate += "-01";
+        std::cout << "Poczatek poprzedniego mieiaca: " << currentMonthBegDate << "\n";
+    }
+    return currentMonthBegDate;
+}

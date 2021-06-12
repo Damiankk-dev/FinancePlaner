@@ -8,15 +8,26 @@
 class DateServer{
 public:
     std::string getDateInProperFormat();
+    std::string getMonthEdges();
 
     bool isDateFormatProper(std::string);
     bool isDateConvertible(std::string);
+    //tests:
+    std::string getCurrentMonthBeginingDate();
+
 
 private:
 
     bool isDateBeforeEndOfCurrentMonth(time_t);
     bool isDateAfter2000(int);
     bool isDateValueInRange(time_t);
+    bool isLeap(unsigned year);
+
+
+    std::string getCurrentMonthEndDate();
+    std::string getPastMonthBeginingDate();
+    std::string getPastMonthEndDate();
+
 
     time_t readSystemDate();
 };
