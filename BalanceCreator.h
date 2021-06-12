@@ -14,15 +14,16 @@ class BalanceCreator{
 public:
     std::string balancePeriod;
     const int SIGNED_IN_USER_ID;
-    BalanceCreator(int signedInUserId, std::string incomeFilename, std::string expenseFilename)
+    BalanceCreator(int signedInUserId, std::string incomeFilename, std::string expenseFilename, std::string periodType)
     : SIGNED_IN_USER_ID(signedInUserId)
     , incomesFile(incomeFilename)
     , expensesFile(expenseFilename)
     {
         PeriodServer periodServer;
-        balancePeriod = periodServer.specifyPeriod();
+        balancePeriod = periodServer.specifyPeriod(periodType);
     }
     void showBalanceByGivenPeriod();
+    void showBalanceFromCurrentMonth();
     //tests
 
 

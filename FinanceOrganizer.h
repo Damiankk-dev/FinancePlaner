@@ -10,13 +10,13 @@
 
 class FinanceOrganizer {
 public:
-    FinanceOrganizer(int signedInUserId, std::string incomesFilename, std::string expensesFilename)
+    FinanceOrganizer( int signedInUserId, std::string incomesFilename, std::string expensesFilename)
     : INCEOMES_FILENAME(incomesFilename)
     , EXPENSES_FILENAME(expensesFilename)
     , SIGNED_IN_USER_ID(signedInUserId)
     {}
     void createNewCashflow(int, std::string);
-    void showBalanceByGivenPeriod(int);
+    void showBalanceByGivenPeriod(int, std::string = "any");
 private:
     std::vector<Cashflow> cashflows;
     const std::string INCEOMES_FILENAME;
