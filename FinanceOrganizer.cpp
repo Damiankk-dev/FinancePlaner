@@ -5,7 +5,7 @@ void FinanceOrganizer::createNewCashflow(int signedInUserId, std::string cashflo
     cashflowCreator.addCashflow();
 }
 
-void FinanceOrganizer::showBalanceByGivenPeriod(int signedInUserId){
-    BalanceCreator newBalance(signedInUserId, INCEOMES_FILENAME, EXPENSES_FILENAME);
+void FinanceOrganizer::showBalanceByGivenPeriod(int signedInUserId, std::string periodType){
+    BalanceCreator newBalance( signedInUserId, INCEOMES_FILENAME, EXPENSES_FILENAME, periodType);
     newBalance.showBalanceByGivenPeriod();
 }

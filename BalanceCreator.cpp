@@ -29,6 +29,9 @@ void BalanceCreator::showBalanceByGivenPeriod(){
     std::cout << "\nBalance: " << calculateBalance() << std::endl;
     system("pause");
 }
+void BalanceCreator::showBalanceFromCurrentMonth(){
+
+}
 
 void BalanceCreator::loadCasfhlowsFromFileByGivenPeriod(){
     incomes = incomesFile.loadSignedInUserCashflowFromFile(SIGNED_IN_USER_ID);
