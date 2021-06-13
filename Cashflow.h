@@ -5,14 +5,14 @@
 
 #include "DateServer.h"
 
-class Cashflow{
-    int SIGNED_USER_ID;
+class Cashflow {
+    int signedInUserID;
     int id;
     double value;
     std::string label;
     std::string date;
 public:
-    Cashflow(int signedUserID, int id = 0, double value = 0.0, std::string label = "", std::string date = ""):SIGNED_USER_ID(signedUserID){
+    Cashflow(int signedUserID, int id = 0, double value = 0.0, std::string label = "", std::string date = ""):signedInUserID(signedUserID) {
         this->id = id;
         this->value = value;
         this->label = label;
@@ -22,7 +22,6 @@ public:
     void setValue(double newValue);
     void setLabel(std::string newLabel);
     void setDate(std::string newDate);
-
     int getSignedInUserId();
     int getId();
     double getValue();

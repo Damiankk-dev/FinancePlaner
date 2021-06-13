@@ -18,10 +18,10 @@ public:
 
     void showCasflowData(Cashflow* newCashflow);
     void addCashflow();
-    //testy
 private:
-    CashflowFile cashflowFile;
     const int SIGNED_IN_USER_ID;
+    CashflowFile cashflowFile;
+
     void setNewCashflowData(Cashflow*);
     int setCashflowID();
 };

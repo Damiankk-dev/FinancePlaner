@@ -19,10 +19,8 @@ public:
     void setID(int newID);
     void setUsername(string newUsername);
     void setPassword(string newPassword);
-
     int getID();
     string getUsername();
     string getPassword();
 };
-
 #endif

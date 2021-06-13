@@ -16,11 +16,9 @@ public:
     }
     void appendUserToFile(User savedUser);
     void updateUserData(User);
-
     vector<User> loadUsersFromFile();
 private:
     vector<User> registeredUsers;
-
     User getUserData();
 };
 

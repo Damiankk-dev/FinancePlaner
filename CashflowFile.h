@@ -13,12 +13,12 @@ public:
     CashflowFile(std::string cashflowFilename): XMLFile(cashflowFilename) {
         isFileInitializedProperly();
     }
-    int getLastCashflowID(int);
     void appendCasflowToFile(Cashflow*);
+    int getLastCashflowID(int);
     std::vector<Cashflow> loadSignedInUserCashflowFromFile(int);
     std::vector<Cashflow> getCashflowTableByPeriod();
 private:
-    int lastCashflowId;
     void getLastCashflowIDFromFile(int);
+    int lastCashflowId;
 };
 #endif // CASHFLOW_FILE_H
