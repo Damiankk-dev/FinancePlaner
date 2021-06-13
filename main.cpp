@@ -2,25 +2,12 @@
 
 #include "Markup.h"
 #include "FinanceManagerInterface.h"
-//#include "RegisteredUsersFile.h"
-//#include "User.h"
-//#include "AuxiliaryMethods.h"
-//#include "UserManager.h"
-//#include "DateServer.h"
-//#include "Cashflow.h"
-//#include "CashflowCreator.h"
-//#include "CashflowFile.h"
-//#include "FinanceOrganizer.h"
-//#include "BalanceCreator.h"
-
-
-#include <vector>
 
 using namespace std;
 
 int main()
 {
-    FinanceManagerInterface newFinanceManagerInterface("juzerzy.xml", "incomes.xml", "eXPENSES.xml");
+    FinanceManagerInterface newFinanceManagerInterface("users.xml", "incomes.xml", "expenses.xml");
     while (true)
     {
         if ( !(newFinanceManagerInterface.isUserRegistered() ) )

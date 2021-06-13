@@ -1,13 +1,5 @@
 #include "BalanceCreator.h"
 
-//void BalanceCreator::showBalanceByGivenPeriod();
-//void BalanceCreator::sortBalanceByDateOldest();
-//void BalanceCreator::showCashflowTable();
-//
-//float BalanceCreator::calculateBalance();
-//float BalanceCreator::calculateIncome(){
-//
-//}
 float BalanceCreator::calculateBalance(){
     return calculateCashflow(incomes) - calculateCashflow(expenses);
 }
@@ -26,11 +18,8 @@ void BalanceCreator::showBalanceByGivenPeriod(){
     showCashflowTable(expenses);
     std::cout << "\nPrzychody:\n";
     showCashflowTable(incomes);
-    std::cout << "\nBalance: " << calculateBalance() << std::endl;
+    std::cout << "\nBilans: " << calculateBalance() << std::endl;
     system("pause");
-}
-void BalanceCreator::showBalanceFromCurrentMonth(){
-
 }
 
 void BalanceCreator::loadCasfhlowsFromFileByGivenPeriod(){
@@ -43,12 +32,13 @@ void BalanceCreator::loadCasfhlowsFromFileByGivenPeriod(){
 }
 
 void BalanceCreator::showCashflowTable(std::vector<Cashflow> &cahsflowToShow){
-    std::cout << std::endl << "L.p. " << " | " << " data " << " | " << " wartosc " << " | " << " nazwa "  << std::endl;
+    std::cout << std::endl << "L.p. " << " | " << " data  " << " | " << " wartosc " << " | " << " nazwa "  << std::endl;
     int i = 1;
     for (std::vector<Cashflow>::iterator itr = cahsflowToShow.begin(), finish = cahsflowToShow.end();
     itr != finish; itr++){
-        std::cout << i++ << " | "
-        << itr->getDate() << " | "
+        if ( i < 10 ) std::cout << i++ << "  | ";
+        else std::cout << i++ << " | ";
+        std::cout << itr->getDate() << " | "
         << itr->getValue() << " | "
         << itr->getLabel() << std::endl;
     }
