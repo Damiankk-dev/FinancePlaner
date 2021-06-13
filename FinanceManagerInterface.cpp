@@ -21,25 +21,29 @@ void FinanceManagerInterface::signInUser(){
     financeOrganizer = new FinanceOrganizer(userManager.getSignedInUserID(), INCOMES_FILENAME, EXPENSES_FILENAME);
 }
 void FinanceManagerInterface::signOutUser(){
-
+    userManager.signOutUser();
+    delete financeOrganizer;
+    financeOrganizer = NULL;
 }
 void FinanceManagerInterface::changeUserPassword(){
-
+    userManager.changeUserPassword();
 }
 void FinanceManagerInterface::addIncome(){
-
+    financeOrganizer->createNewCashflow(userManager.getSignedInUserID(), INCOMES_FILENAME);
 }
 void FinanceManagerInterface::addExpense(){
-
+    financeOrganizer->createNewCashflow(userManager.getSignedInUserID(), EXPENSES_FILENAME);
 }
 void FinanceManagerInterface::createBalanceCurrentMonth(){
-
+    std::cout << "Feature unavaliable yet\n";
+    system("pause");
 }
 void FinanceManagerInterface::createBalancePastMonth(){
-
+    std::cout << "Feature unavaliable yet\n";
+    system("pause");
 }
 void FinanceManagerInterface::createBalanceAnyPeriod(){
-
+    financeOrganizer->showBalanceByGivenPeriod(userManager.getSignedInUserID());
 }
 bool FinanceManagerInterface::isUserRegistered(){
     return userManager.isUserSignedIn();

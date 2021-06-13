@@ -27,6 +27,7 @@ void BalanceCreator::showBalanceByGivenPeriod(){
     std::cout << "\nPrzychody:\n";
     showCashflowTable(incomes);
     std::cout << "\nBalance: " << calculateBalance() << std::endl;
+    system("pause");
 }
 
 void BalanceCreator::loadCasfhlowsFromFileByGivenPeriod(){
