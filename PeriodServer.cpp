@@ -1,15 +1,23 @@
 #include "PeriodServer.h"
 
-std::string PeriodServer::specifyPeriod(){
+std::string PeriodServer::specifyPeriod(std::string periodType){
     std::string specifiedPeriod = "";
-    std::cout << "Okresl daty okresu,\nz ktorego chcesz policzyc bilans\n";
+    if ( periodType == "current" ){
+        specifiedPeriod += getCurrentMonthBeginingDate();
+        specifiedPeriod += "|";
+        specifiedPeriod += getCurrentMonthEndDate();
+    } else if (periodType == "past"){
+        specifiedPeriod += getPastMonthBeginingDate();
+        specifiedPeriod += "|";
+        specifiedPeriod += getPastMonthEndDate();
+    } else {
+        std::cout << "Okresl daty okresu,\nz ktorego chcesz policzyc bilans\n";
 
-    std::cout << "Podaj dolna granice okresu\n";
-//    specifiedPeriod = getDateInProperFormat();
-    specifiedPeriod += "2021-04-01";
-    std::cout << "Podaj gorna granice okresu\n";
-    specifiedPeriod += "|";
-//    specifiedPeriod += getDateInProperFormat();
-    specifiedPeriod += "2021-04-30";
+        std::cout << "Podaj dolna granice okresu\n";
+        specifiedPeriod = getDateInProperFormat();
+        std::cout << "Podaj gorna granice okresu\n";
+        specifiedPeriod += "|";
+        specifiedPeriod += getDateInProperFormat();
+    }
     return specifiedPeriod;
 }

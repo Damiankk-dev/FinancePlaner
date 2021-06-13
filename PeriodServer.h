@@ -6,6 +6,8 @@
 #include "DateServer.h"
 class PeriodServer : public DateServer{
 public:
-    std::string specifyPeriod();
+    std::string specifyPeriod(std::string);
+    std::string currentMonthPeriod();
+    std::string pastMonthPeriod();
 };
 #endif // PERIOD_SERVER_H
