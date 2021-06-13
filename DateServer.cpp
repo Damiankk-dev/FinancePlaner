@@ -5,12 +5,18 @@ std::string DateServer::getDateInProperFormat()
     AuxiliaryMethods auxiliaryMethods;
 
     while( true ){
-        std::cout << "Podaj date z zakresu 2000-01-01\ndo konca aktualnego miesiaca\nwe wlasciwym formacie (rrrr-mm-dd): ";
+        std::cout << "Jezeli akceptujesz dzisiejsza date wcisnij Enter\nlub\n"
+        "Podaj date z zakresu 2000-01-01\ndo konca aktualnego miesiaca"
+        "\nwe wlasciwym formacie (rrrr-mm-dd): ";
         std::string givenDate = auxiliaryMethods.readLine();
-        if (isDateFormatProper(givenDate)) {
-            if (isDateConvertible(givenDate)){
-                time_t givenDateT = auxiliaryMethods.convertString2Date(givenDate);
-                if (isDateValueInRange(givenDateT) ) return givenDate;
+        if ( givenDate == "" ) {
+            return getTodayDate();
+        } else {
+            if (isDateFormatProper(givenDate)) {
+                if (isDateConvertible(givenDate)){
+                    time_t givenDateT = auxiliaryMethods.convertString2Date(givenDate);
+                    if (isDateValueInRange(givenDateT) ) return givenDate;
+                }
             }
         }
     }
@@ -45,6 +51,14 @@ bool DateServer::isDateFormatProper(std::string dateToCheck)
             return false;
         } else return true;
     }
+}
+std::string DateServer::getTodayDate(){
+    time_t currentSystemDate = readSystemDate();
+    struct tm *currentDate = localtime(&currentSystemDate );
+    int dayNum = currentDate->tm_mday;
+    int monthNum = 1 + currentDate->tm_mon;
+    int yearNum = 1900 + currentDate->tm_year;
+    return concatenateDate(yearNum, monthNum, dayNum);
 }
 time_t DateServer::readSystemDate(){
     time_t curTime = time(NULL);

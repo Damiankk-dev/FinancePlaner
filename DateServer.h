@@ -13,6 +13,7 @@ public:
     std::string getPastMonthBeginingDate();
     std::string getCurrentMonthEndDate();
     std::string getPastMonthEndDate();
+    std::string getTodayDate();
 
     bool isDateFormatProper(std::string);
     bool isDateConvertible(std::string);
