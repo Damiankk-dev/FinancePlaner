@@ -12,7 +12,7 @@ bool AuxiliaryMethods::isDate1Older(std::string date1, std::string date2){
     time_t ttime2;
     ttime1 = AuxiliaryMethods::convertString2Date(date1);
     ttime2 = AuxiliaryMethods::convertString2Date(date2);
-    return difftime(ttime1, ttime2) <= 0 ;
+    return difftime(ttime1, ttime2) < 0 ;
 }
 
 char AuxiliaryMethods::readChar()

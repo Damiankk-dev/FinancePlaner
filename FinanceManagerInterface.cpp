@@ -35,12 +35,10 @@ void FinanceManagerInterface::addExpense(){
     financeOrganizer->createNewCashflow(userManager.getSignedInUserID(), EXPENSES_FILENAME);
 }
 void FinanceManagerInterface::createBalanceCurrentMonth(){
-    std::cout << "Feature unavaliable yet\n";
-    system("pause");
+    financeOrganizer->showBalanceByGivenPeriod(userManager.getSignedInUserID(), "current");
 }
 void FinanceManagerInterface::createBalancePastMonth(){
-    std::cout << "Feature unavaliable yet\n";
-    system("pause");
+    financeOrganizer->showBalanceByGivenPeriod(userManager.getSignedInUserID(), "past");
 }
 void FinanceManagerInterface::createBalanceAnyPeriod(){
     financeOrganizer->showBalanceByGivenPeriod(userManager.getSignedInUserID());

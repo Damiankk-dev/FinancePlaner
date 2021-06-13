@@ -24,8 +24,6 @@ public:
     }
     void showBalanceByGivenPeriod();
     void showBalanceFromCurrentMonth();
-    //tests
-
 
 private:
     std::vector<Cashflow> incomes;
