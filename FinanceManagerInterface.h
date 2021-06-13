@@ -8,12 +8,11 @@
 #include "UserManager.h"
 
 class FinanceManagerInterface{
-    UserManager userManager;
-    FinanceOrganizer *financeOrganizer;
     const std::string INCOMES_FILENAME;
     const std::string EXPENSES_FILENAME;
 
-
+    UserManager userManager;
+    FinanceOrganizer *financeOrganizer;
 
 public:
     FinanceManagerInterface( std::string registeredUsersFilename, std::string incomesFilename, std::string expensesFilename)
@@ -27,9 +26,9 @@ public:
         delete financeOrganizer;
         financeOrganizer = NULL;
     }
+
     char mainMenuChoice;
-    void showMainMenu();
-    void showSubmenuSignedInUser();
+
     void registerUser();
     void signInUser();
     void signOutUser();
@@ -39,7 +38,8 @@ public:
     void createBalanceCurrentMonth();
     void createBalancePastMonth();
     void createBalanceAnyPeriod();
+    void showMainMenu();
+    void showSubmenuSignedInUser();
     bool isUserRegistered();
-    //tests
 };
 #endif // FINANCE_MANAGER_INTERFACE_H

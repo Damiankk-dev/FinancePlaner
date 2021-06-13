@@ -11,6 +11,5 @@ public:
     void showSubmenuFinanceManager();
     char choseFromMainMenu();
     char choseFromSubmenuFinanceManager();
-private:
 };
 #endif // TEXT_MENU_H

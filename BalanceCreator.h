@@ -12,8 +12,9 @@
 
 class BalanceCreator{
 public:
-    std::string balancePeriod;
     const int SIGNED_IN_USER_ID;
+    std::string balancePeriod;
+
     BalanceCreator(int signedInUserId, std::string incomeFilename, std::string expenseFilename, std::string periodType)
     : SIGNED_IN_USER_ID(signedInUserId)
     , incomesFile(incomeFilename)
@@ -22,13 +23,13 @@ public:
         PeriodServer periodServer;
         balancePeriod = periodServer.specifyPeriod(periodType);
     }
+
     void showBalanceByGivenPeriod();
     void showBalanceFromCurrentMonth();
 
 private:
     std::vector<Cashflow> incomes;
     std::vector<Cashflow> expenses;
-
     CashflowFile incomesFile;
     CashflowFile expensesFile;
 
@@ -36,12 +37,10 @@ private:
     void showCashflowTable(std::vector<Cashflow>&);
     void limitCashflowByGivenPeriod(std::vector<Cashflow> &cahsflowToLimit);
     void loadCasfhlowsFromFileByGivenPeriod();
-
+    static bool isCashflow1Older(Cashflow, Cashflow);
+    bool isDateInPeriod(std::string, std::string );
     float calculateBalance();
     float calculateCashflow(std::vector<Cashflow>&);
-
-    bool isDateInPeriod(std::string, std::string );
-    static bool isCashflow1Older(Cashflow, Cashflow);
 };
 
 #endif // BALANCE_CREATOR_H

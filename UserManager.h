@@ -16,9 +16,7 @@ public:
     void registerUser();
     void changeUserPassword();
     void signOutUser();
-
     bool isUserSignedIn();
-
     int signInUser();
     int getSignedInUserID();
 
@@ -29,9 +27,7 @@ private:
 
     bool isUsernameExists(std::string);
     bool isPasswordCorrect();//optional
-
     int getNewUserID();
-
     User addNewUser();
 };
 #endif // USER_MANAGER_H

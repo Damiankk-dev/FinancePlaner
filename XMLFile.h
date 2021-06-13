@@ -20,7 +20,4 @@ public:
 private:
     void initializeFile();
 };
-
-
-
 #endif // XML_FILE

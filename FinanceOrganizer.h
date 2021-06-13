@@ -18,9 +18,9 @@ public:
     void createNewCashflow(int, std::string);
     void showBalanceByGivenPeriod(int, std::string = "any");
 private:
-    std::vector<Cashflow> cashflows;
+    const int SIGNED_IN_USER_ID;
     const std::string INCEOMES_FILENAME;
     const std::string EXPENSES_FILENAME;
-    const int SIGNED_IN_USER_ID;
+    std::vector<Cashflow> cashflows;
 };
 #endif // FINANCE_ORGANIZER_H
