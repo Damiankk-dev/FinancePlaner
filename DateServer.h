@@ -9,6 +9,10 @@ class DateServer{
 public:
     std::string getDateInProperFormat();
     std::string getMonthEdges();
+    std::string getCurrentMonthBeginingDate();
+    std::string getPastMonthBeginingDate();
+    std::string getCurrentMonthEndDate();
+    std::string getPastMonthEndDate();
 
     bool isDateFormatProper(std::string);
     bool isDateConvertible(std::string);
@@ -22,11 +26,8 @@ private:
     bool isDateValueInRange(time_t);
     bool isLeap(unsigned year);
 
+    int getLastDayOfMonth(int, int);
 
-    std::string getCurrentMonthBeginingDate();
-    std::string getPastMonthBeginingDate();
-    std::string getCurrentMonthEndDate();
-    std::string getPastMonthEndDate();
     std::string concatenateDate(int, int, int);
 
 

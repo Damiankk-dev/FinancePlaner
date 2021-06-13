@@ -75,6 +75,25 @@ bool DateServer::isLeap(unsigned year) {
     else return false ;
 }
 
+int DateServer::getLastDayOfMonth(int monthNum, int yearNum){
+    if ( monthNum < 8 ) {
+        if ( monthNum % 2 != 0 ) {
+            return 31;
+        } else if ( monthNum == 2 ) {
+            if ( isLeap(yearNum) ) return 29;
+            else return 28;
+        } else {
+            return 30;
+        }
+    } else {
+        if ( monthNum % 2 != 0 ) {
+            return 30;
+        } else {
+            return 31;
+        }
+    }
+    return 0;
+}
 std::string DateServer::getCurrentMonthBeginingDate(){
     time_t currentSystemDate = readSystemDate();
     struct tm *currentDate = localtime(&currentSystemDate );
@@ -82,43 +101,53 @@ std::string DateServer::getCurrentMonthBeginingDate(){
     int monthNum = 1 + currentDate->tm_mon;
     int yearNum = 1900 + currentDate->tm_year;
     return concatenateDate(yearNum, monthNum, 1);
-//    if ( monthNum < 8 ) {
-//        if ( monthNum % 2 != 0 ) {
-//            daysInMonth = 31;
-//        } else if ( monthNum == 2 ) {
-//            if ( isLeap(yearNum) ) daysInMonth = 29;
-//            else daysInMonth = 28;
-//        } else {
-//            daysInMonth = 30;
-//        }
-//    } else {
-//        if ( monthNum % 2 != 0 ) {
-//            daysInMonth = 30;
-//        } else {
-//            daysInMonth = 31;
-//        }
-//    }
 }
 std::string DateServer::getPastMonthBeginingDate(){
     time_t currentSystemDate = readSystemDate();
     struct tm *currentDate = localtime(&currentSystemDate );
 
-    int monthNum = 1 + currentDate->tm_mon;
+    int monthNum = currentDate->tm_mon;
     int yearNum = 1900 + currentDate->tm_year;
-    if (monthNum == 1){
-        return concatenateDate(yearNum - 1, 12, 1);
+    if ( monthNum == 0 ){
+        yearNum -= 1;
+        monthNum = 12;
+        return concatenateDate(yearNum, monthNum, 1);
     } else {
-        return concatenateDate(yearNum, monthNum - 1, 1);
+        return concatenateDate(yearNum, monthNum, 1);
     }
 }
-std::string DateServer::concatenateDate(int year, int month, int day){
-        std::string dateString = "";
-        dateString += AuxiliaryMethods::convertInt2String(year);
-        dateString += "-";
-        dateString += AuxiliaryMethods::convertInt2String(month);
-        dateString += "-";
-        dateString += AuxiliaryMethods::convertInt2String(day);
-        std::cout << "Podana data do zlaczenia: " << dateString << "\n";
-        return dateString;
+std::string DateServer::getCurrentMonthEndDate(){
+    time_t currentSystemDate = readSystemDate();
+    struct tm *currentDate = localtime(&currentSystemDate );
 
+    int monthNum = 1 + currentDate->tm_mon;
+    int yearNum = 1900 + currentDate->tm_year;
+    int lastDayOfMonth = getLastDayOfMonth(monthNum, yearNum);
+    return concatenateDate(yearNum, monthNum, lastDayOfMonth);
+}
+std::string DateServer::getPastMonthEndDate(){
+    time_t currentSystemDate = readSystemDate();
+    struct tm *currentDate = localtime(&currentSystemDate );
+
+    int monthNum = currentDate->tm_mon;
+    int yearNum = 1900 + currentDate->tm_year;
+    if ( monthNum == 0 ){
+        yearNum -= 1;
+        monthNum = 12;
+        return concatenateDate(yearNum, monthNum, getLastDayOfMonth(monthNum, yearNum));
+    } else {
+        return concatenateDate(yearNum, monthNum, getLastDayOfMonth(monthNum, yearNum));
+    }
+
+}
+std::string DateServer::concatenateDate(int year, int month, int day){
+    std::string dateString = "";
+    dateString += AuxiliaryMethods::convertInt2String(year);
+    dateString += "-";
+    if ( month < 10 ) dateString += "0";
+    dateString += AuxiliaryMethods::convertInt2String(month);
+    dateString += "-";
+    if ( day < 10 ) dateString += "0";
+    dateString += AuxiliaryMethods::convertInt2String(day);
+    return dateString;
 }
