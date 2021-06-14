@@ -13,12 +13,14 @@ std::string DateServer::getDateInProperFormat()
             return getTodayDate();
         } else {
             if (isDateFormatProper(givenDate)) {
-                if (isDateConvertible(givenDate)){
+                if (isDateConvertible(givenDate) && isDayBelnogsMonth(givenDate) ){
                     time_t givenDateT = auxiliaryMethods.convertString2Date(givenDate);
                     if (isDateValueInRange(givenDateT) ) return givenDate;
                 }
             }
         }
+        std::cout << "Zweryfikuj poprawnosc podanej daty: " << givenDate << "\n";
+        system("pause");
     }
 }
 bool DateServer::isDateAfter2000(int givenDateYear){
@@ -88,7 +90,12 @@ bool DateServer::isLeap(unsigned year) {
     if (((year%4 == 0)&& (year%100 != 0)) || (year%400 == 0)) return true;
     else return false ;
 }
-
+bool DateServer::isDayBelnogsMonth(std::string date) {
+    int day = stoi(date.substr(8, 2));
+    int month = stoi(date.substr(5, 2));
+    int year = stoi( date.substr(0, 4) );
+    return day < getLastDayOfMonth( month, year );
+}
 int DateServer::getLastDayOfMonth(int monthNum, int yearNum){
     if ( monthNum < 8 ) {
         if ( monthNum % 2 != 0 ) {
